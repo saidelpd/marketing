@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Raffle extends Model
 {
+    protected $table = 'raffle';
+
     protected $fillable = ['prefix','obj_name','obj_cost','ticket_cost','raffle_images_path','closing_date'];
 
     /**
