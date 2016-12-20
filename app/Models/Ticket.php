@@ -8,7 +8,7 @@ class Ticket extends Model
 {
     protected $table = 'tickets';
 
-    protected $fillable = ['user_id', 'raffle_id', 'fee', 'discount'];
+    protected $fillable = ['user_id', 'raffle_id', 'ticket_number', 'fee', 'discount'];
 
     /**
      * Return the raffle that this ticket belongs to

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\TicketsEvent;
+use App\Listeners\TicketsListener;
+use App\Models\Ticket;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,9 +16,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
-        ],
+        TicketsEvent::class => [TicketsListener::class],
     ];
 
     /**
@@ -27,6 +28,8 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        Ticket::created(function($ticket){
+            event(new TicketsEvent($ticket,'created'));
+        });
     }
 }

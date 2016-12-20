@@ -14,9 +14,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class,50)->create();
-        factory(Raffle::class,1)->create();
-        factory(Ticket::class,450)->create();
+        if(!User::count())
+        {
+            factory(User::class,50)->create();
+        }
+        if(!Raffle::count())
+        {
+            factory(Raffle::class,1)->create();
+        }
+        if(!Ticket::count()) {
+            factory(Ticket::class, 450)->create();
+        }
+
     }
 
 }
