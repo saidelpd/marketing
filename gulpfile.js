@@ -12,8 +12,17 @@ require('laravel-elixir-vue-2');
  | file for our application, as well as publishing vendor resources.
  |
  */
-
 elixir(function(mix) {
     mix.sass('app.scss')
-        .webpack('app.js');
+        .webpack('app.js').version(['public/css/app.css']).copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/build/fonts/bootstrap')
+        .scripts([
+           'vendor/jquery.singlePageNav.min.js',
+           'vendor/jquery.fancybox.pack.js',
+            'vendor/owl.carousel.min.js',
+            'vendor/jquery.easing.min.js',
+            'vendor/jquery.slitslider.js',
+            'vendor/jquery.ba-cond.min.js',
+            'vendor/wow.min.js',
+            'frontend.js'
+        ],'public/js/frontend-version.js' )
 });
