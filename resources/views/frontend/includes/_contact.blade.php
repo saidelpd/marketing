@@ -7,7 +7,6 @@
                 <p>Leave a Message</p>
             </div>
 
-
             <div class="col-md-7 contact-form wow animated fadeInLeft">
                 <form action="#" method="post">
                     <div class="input-field">

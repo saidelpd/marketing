@@ -16,7 +16,9 @@ class CreateRafflePhotos extends Migration
         Schema::create('raffle_photos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('raffle_id');
-            $table->string('name');
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('path');
             $table->timestamps();
         });
     }

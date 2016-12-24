@@ -6,8 +6,8 @@
  */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../fonts/Font-Awesome/fontawesome-webfont.eot?v=4.2.0");
-  src: url("../fonts/Font-Awesome/fontawesome-webfont.eot?#iefix&v=4.2.0") format("embedded-opentype"), url("../fonts/Font-Awesome/fontawesome-webfont.woff?v=4.2.0") format("woff"), url("../fonts/Font-Awesome/fontawesome-webfont.ttf?v=4.2.0") format("truetype"), url("../fonts/Font-Awesome/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular") format("svg");
+  src: url("/fonts/Font-Awesome/fontawesome-webfont.eot?v=4.2.0");
+  src: url("/fonts/Font-Awesome/fontawesome-webfont.eot?#iefix&v=4.2.0") format("embedded-opentype"), url("/fonts/Font-Awesome/fontawesome-webfont.woff?v=4.2.0") format("woff"), url("/fonts/Font-Awesome/fontawesome-webfont.ttf?v=4.2.0") format("truetype"), url("/fonts/Font-Awesome/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -10488,15 +10488,15 @@ button.close {
 }
 
 .bg-img-1 {
-  background-image: url(../img/slider/banner.jpg);
+  background-image: url("/images/slider/banner.jpg");
 }
 
 .bg-img-2 {
-  background-image: url(../img/slider/affinity.jpeg);
+  background-image: url("/images/slider/affinity.jpeg");
 }
 
 .bg-img-3 {
-  background-image: url(../img/slider/cinelli.jpeg);
+  background-image: url("/images/slider/cinelli.jpeg");
 }
 
 /* Animations for content elements */
@@ -13835,7 +13835,7 @@ h1.navbar-brand {
 } */
 /* Project laughtbox setup */
 .fancybox-item.fancybox-close {
-  background: url("../img/icons/close.png") no-repeat scroll 0 0 transparent;
+  background: url("/images/icons/close.png") no-repeat scroll 0 0 transparent;
   height: 50px;
   right: 0;
   top: 0;
@@ -13843,14 +13843,14 @@ h1.navbar-brand {
 }
 
 .fancybox-next span {
-  background: url("../img/right.png") no-repeat scroll center center #009ee3;
+  background: url("/images/right.png") no-repeat scroll center center #009ee3;
   height: 50px;
   width: 50px;
   right: 0;
 }
 
 .fancybox-prev span {
-  background: url("../img/left.png") no-repeat scroll center center #009ee3;
+  background: url("/images/left.png") no-repeat scroll center center #009ee3;
   height: 50px;
   width: 50px;
   left: 0;
@@ -13966,6 +13966,7 @@ h1.navbar-brand {
   overflow: hidden;
   position: relative;
   width: 32%;
+  height: 250px;
 }
 
 figcaption.mask {
@@ -14048,7 +14049,7 @@ ul.external li a:hover {
 	Testimonials
 ==================================================================*/
 #testimonials {
-  background-image: url(../img/parallax/testimonial.jpg);
+  background-image: url(/images/parallax/testimonial.jpg);
   padding: 0;
   color: #fff;
 }
@@ -14082,7 +14083,7 @@ ul.external li a:hover {
 }
 
 .testimonial-item > div:before {
-  background-image: url("../img/icons/quotes.png");
+  background-image: url("/images/icons/quotes.png");
   background-repeat: no-repeat;
   bottom: 127px;
   height: 33px;
@@ -14092,7 +14093,7 @@ ul.external li a:hover {
 }
 
 .testimonial-item > div:after {
-  background-image: url("../img/icons/quotes.png");
+  background-image: url("/images/icons/quotes.png");
   background-position: -58px 0;
   background-repeat: no-repeat;
   bottom: -50px;
@@ -14206,12 +14207,12 @@ ul.external li a:hover {
 	Price
 ==================================================================*/
 #social {
-  background-image: url(../img/slider/banner.jpg);
+  background-image: url(/images/slider/banner.jpg);
   padding: 0;
 }
 
 #social .overlay {
-  background: url("../img/slide_bg.png") repeat scroll 0 0 transparent;
+  background: url("/images/slide_bg.png") repeat scroll 0 0 transparent;
   padding: 100px 0 120px;
 }
 

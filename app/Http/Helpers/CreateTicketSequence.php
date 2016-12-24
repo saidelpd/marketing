@@ -23,6 +23,7 @@ class CreateTicketSequence
     public function __construct(Ticket $ticket)
     {
         $this->ticket = $ticket;
+        $this->has_error = false;
     }
 
     /**
@@ -31,7 +32,7 @@ class CreateTicketSequence
     public function getTicketSequence()
     {
         if ($this->ticket->raffle) {
-          return  $this->ticket->raffle->prefix.str_pad($this->ticket->id,  6, "0",STR_PAD_LEFT);
+            return $this->ticket->raffle->prefix . str_pad($this->ticket->id, 6, "0", STR_PAD_LEFT);
         }
         $this->has_error = true;
         $this->error_message = 'Invalid Raffle, Please Try Again';

@@ -14,7 +14,7 @@ class Ticket extends Model
      * Return the raffle that this ticket belongs to
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Raffle()
+    public function raffle()
     {
         return $this->belongsTo(Raffle::class);
     }

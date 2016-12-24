@@ -10,9 +10,9 @@
 
                 <div class="slide-caption">
                     <div class="caption-content">
-                        <h2 class="animated fadeInDown">BLUE Onepage HTML5 Template</h2>
-                        <span class="animated fadeInDown">Clean and Professional one page Template</span>
-                        <a href="#" class="btn btn-blue btn-effect">Join US</a>
+                        <h2 class="animated fadeInDown">Fantasy Marketing Raffle</h2>
+                        <span class="animated fadeInDown">Register to win a {{$raffle->obj_name}}</span>
+                        <a href="#" class="btn btn-blue btn-effect">Buy Tickets</a>
                     </div>
                 </div>
 
@@ -23,9 +23,9 @@
                 <div class="bg-img bg-img-2"></div>
                 <div class="slide-caption">
                     <div class="caption-content">
-                        <h2>BLUE Onepage HTML5 Template</h2>
-                        <span>Clean and Professional one page Template</span>
-                        <a href="#" class="btn btn-blue btn-effect">Join US</a>
+                        <h2>Fantasy Marketing Raffle</h2>
+                        <span>Don't Miss the opportunity to win your dream car</span>
+                        <a href="#" class="btn btn-blue btn-effect">Buy Tickets</a>
                     </div>
                 </div>
 
@@ -36,22 +36,15 @@
                 <div class="bg-img bg-img-3"></div>
                 <div class="slide-caption">
                     <div class="caption-content">
-                        <h2>BLUE Onepage HTML5 Template</h2>
-                        <span>Clean and Professional one page Template</span>
-                        <a href="#" class="btn btn-blue btn-effect">Join US</a>
+                        <h2>Fantasy Marketing Raffle</h2>
+                        <span>With only a {{$raffle->ticketCostPrice()}} dollars you can have this upgraded {{$raffle->obj_name}}</span>
+                        <a href="#" class="btn btn-blue btn-effect">Buy Tickets</a>
                     </div>
                 </div>
 
             </div>
 
         </div><!-- /sl-slider -->
-
-        <!--
-        <nav id="nav-arrows" class="nav-arrows">
-            <span class="nav-arrow-prev">Previous</span>
-            <span class="nav-arrow-next">Next</span>
-        </nav>
-        -->
 
         <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
             <a href="javascript:;" class="sl-prev">
@@ -62,8 +55,7 @@
             </a>
         </nav>
 
-
-        <nav id="nav-dots" class="nav-dots visible-xs visible-sm hidden-md hidden-lg">
+        <nav id="nav-dots" class="nav-dots">
             <span class="nav-dot-current"></span>
             <span></span>
             <span></span>

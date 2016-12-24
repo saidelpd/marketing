@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Raffle;
 use App\Models\Ticket;
+use App\Models\RafflePhotos;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,9 @@ class DatabaseSeeder extends Seeder
         }
         if(!Ticket::count()) {
             factory(Ticket::class, 450)->create();
+        }
+        if(!RafflePhotos::count()) {
+            factory(RafflePhotos::class, 9)->create();
         }
 
     }

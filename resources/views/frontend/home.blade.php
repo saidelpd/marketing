@@ -27,10 +27,10 @@
 <main class="site-content" role="main">
     @include('frontend.includes._slider')
     @include('frontend.includes._about')
-    @include('frontend.includes._services')
-    @include('frontend.includes._portfolio')
+    @include('frontend.includes._how_to')
+    @include('frontend.includes._gallery')
     @include('frontend.includes._testimonials')
-    @include('frontend.includes._price')
+    @include('frontend.includes._buy_tickets')
     @include('frontend.includes._social')
     @include('frontend.includes._contact')
 </main>
