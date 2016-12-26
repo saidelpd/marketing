@@ -23,6 +23,7 @@ elixir(function(mix) {
             'vendor/jquery.slitslider.js',
             'vendor/jquery.ba-cond.min.js',
             'vendor/wow.min.js',
+            'helper.js',
             'frontend.js'
         ],'public/js/frontend-version.js' )
 });

@@ -12,5 +12,7 @@
 */
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::post('/contact', ['as' => 'home.contact', 'uses' => 'HomeController@contact']);
+Route::post('/buy_tickets', ['as' => 'home.buyTickets', 'uses' => 'HomeController@buyTickets']);
 
 

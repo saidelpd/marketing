@@ -976,80 +976,179 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
 (function($){$.fn.cond=function(){var e,a=arguments,b=0,f,d,c;while(!f&&b<a.length){f=a[b++];d=a[b++];f=$.isFunction(f)?f.call(this):f;c=!d?f:f?d.call(this,f):e}return c!==e?c:this}})(jQuery);
 /*! WOW - v0.1.9 - 2014-05-10
 * Copyright (c) 2014 Matthieu Aussaguel; Licensed MIT */(function(){var a,b,c=function(a,b){return function(){return a.apply(b,arguments)}};a=function(){function a(){}return a.prototype.extend=function(a,b){var c,d;for(c in a)d=a[c],null!=d&&(b[c]=d);return b},a.prototype.isMobile=function(a){return/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(a)},a}(),b=this.WeakMap||(b=function(){function a(){this.keys=[],this.values=[]}return a.prototype.get=function(a){var b,c,d,e,f;for(f=this.keys,b=d=0,e=f.length;e>d;b=++d)if(c=f[b],c===a)return this.values[b]},a.prototype.set=function(a,b){var c,d,e,f,g;for(g=this.keys,c=e=0,f=g.length;f>e;c=++e)if(d=g[c],d===a)return void(this.values[c]=b);return this.keys.push(a),this.values.push(b)},a}()),this.WOW=function(){function d(a){null==a&&(a={}),this.scrollCallback=c(this.scrollCallback,this),this.scrollHandler=c(this.scrollHandler,this),this.start=c(this.start,this),this.scrolled=!0,this.config=this.util().extend(a,this.defaults),this.animationNameCache=new b}return d.prototype.defaults={boxClass:"wow",animateClass:"animated",offset:0,mobile:!0},d.prototype.init=function(){var a;return this.element=window.document.documentElement,"interactive"===(a=document.readyState)||"complete"===a?this.start():document.addEventListener("DOMContentLoaded",this.start)},d.prototype.start=function(){var a,b,c,d;if(this.boxes=this.element.getElementsByClassName(this.config.boxClass),this.boxes.length){if(this.disabled())return this.resetStyle();for(d=this.boxes,b=0,c=d.length;c>b;b++)a=d[b],this.applyStyle(a,!0);return window.addEventListener("scroll",this.scrollHandler,!1),window.addEventListener("resize",this.scrollHandler,!1),this.interval=setInterval(this.scrollCallback,50)}},d.prototype.stop=function(){return window.removeEventListener("scroll",this.scrollHandler,!1),window.removeEventListener("resize",this.scrollHandler,!1),null!=this.interval?clearInterval(this.interval):void 0},d.prototype.show=function(a){return this.applyStyle(a),a.className=""+a.className+" "+this.config.animateClass},d.prototype.applyStyle=function(a,b){var c,d,e;return d=a.getAttribute("data-wow-duration"),c=a.getAttribute("data-wow-delay"),e=a.getAttribute("data-wow-iteration"),this.animate(function(f){return function(){return f.customStyle(a,b,d,c,e)}}(this))},d.prototype.animate=function(){return"requestAnimationFrame"in window?function(a){return window.requestAnimationFrame(a)}:function(a){return a()}}(),d.prototype.resetStyle=function(){var a,b,c,d,e;for(d=this.boxes,e=[],b=0,c=d.length;c>b;b++)a=d[b],e.push(a.setAttribute("style","visibility: visible;"));return e},d.prototype.customStyle=function(a,b,c,d,e){return b&&this.cacheAnimationName(a),a.style.visibility=b?"hidden":"visible",c&&this.vendorSet(a.style,{animationDuration:c}),d&&this.vendorSet(a.style,{animationDelay:d}),e&&this.vendorSet(a.style,{animationIterationCount:e}),this.vendorSet(a.style,{animationName:b?"none":this.cachedAnimationName(a)}),a},d.prototype.vendors=["moz","webkit"],d.prototype.vendorSet=function(a,b){var c,d,e,f;f=[];for(c in b)d=b[c],a[""+c]=d,f.push(function(){var b,f,g,h;for(g=this.vendors,h=[],b=0,f=g.length;f>b;b++)e=g[b],h.push(a[""+e+c.charAt(0).toUpperCase()+c.substr(1)]=d);return h}.call(this));return f},d.prototype.vendorCSS=function(a,b){var c,d,e,f,g,h;for(d=window.getComputedStyle(a),c=d.getPropertyCSSValue(b),h=this.vendors,f=0,g=h.length;g>f;f++)e=h[f],c=c||d.getPropertyCSSValue("-"+e+"-"+b);return c},d.prototype.animationName=function(a){var b;try{b=this.vendorCSS(a,"animation-name").cssText}catch(c){b=window.getComputedStyle(a).getPropertyValue("animation-name")}return"none"===b?"":b},d.prototype.cacheAnimationName=function(a){return this.animationNameCache.set(a,this.animationName(a))},d.prototype.cachedAnimationName=function(a){return this.animationNameCache.get(a)},d.prototype.scrollHandler=function(){return this.scrolled=!0},d.prototype.scrollCallback=function(){var a;return this.scrolled&&(this.scrolled=!1,this.boxes=function(){var b,c,d,e;for(d=this.boxes,e=[],b=0,c=d.length;c>b;b++)a=d[b],a&&(this.isVisible(a)?this.show(a):e.push(a));return e}.call(this),!this.boxes.length)?this.stop():void 0},d.prototype.offsetTop=function(a){for(var b;void 0===a.offsetTop;)a=a.parentNode;for(b=a.offsetTop;a=a.offsetParent;)b+=a.offsetTop;return b},d.prototype.isVisible=function(a){var b,c,d,e,f;return c=a.getAttribute("data-wow-offset")||this.config.offset,f=window.pageYOffset,e=f+this.element.clientHeight-c,d=this.offsetTop(a),b=d+a.clientHeight,e>=d&&b>=f},d.prototype.util=function(){return this._util||(this._util=new a)},d.prototype.disabled=function(){return!this.config.mobile&&this.util().isMobile(navigator.userAgent)},d}()}).call(this);
-/* ========================================================================= */
-/*	Preloader
- /* ========================================================================= */
 
-$(window).on('load', function() { $("#preloader").fadeOut("slow");});
+class Errors {
+    constructor() {
+        this.errors = {};
+    }
+
+    get(field) {
+        if (this.errors[field]) {
+            return this.errors[field][0];
+        }
+    }
+
+    any() {
+        return Object.keys(this.errors).length > 0;
+    }
+
+    record(error) {
+        this.errors = error;
+    }
+
+    has(field) {
+        return this.errors.hasOwnProperty(field);
+    }
+
+    clear(field) {
+        if(field)
+        {
+            delete this.errors[field];
+            return;
+        }
+        this.errors={};
+    }
+}
+
+class Form {
+    constructor(data) {
+        this.originalData = data;
+        this.has_success = false;
+        this.has_error = false;
+        this.is_sending = false;
+        this.message = '';
+        for (let field in data) {
+            this[field] = data[field];
+        }
+        this.errors = new Errors();
+    }
+
+    reset() {
+        for (let field in this.originalData) {
+            if(field!='_token')
+            this[field] = '';
+        }
+    }
+
+    data() {
+        let data = Object.assign({}, this);
+        delete data.originalData;
+        delete data.errors;
+        delete data.has_success;
+        delete data.is_sending;
+        delete data.has_error;
+        return data;
+    }
+
+    onSuccess() {
+        this.has_success = true;
+        this.has_error = this.is_sending = false;
+        this.errors.clear();
+        this.reset();
+    }
+
+    onFail(data) {
+        this.message = '';
+        this.has_error = true;
+        this.has_success = this.is_sending = false;
+        if(data.status == 500)
+        {
+            this.message = 'An unknown error has occurred please refresh the browser and try again';
+        }
+        else if(data.status == 417)
+        {
+            this.message = 'Error Con Stripe';
+        }
+        else{
+            this.errors.record(data.responseJSON);
+        }
+    }
+
+    submit(path,vue) {
+        let form = this;
+        this.is_sending =true;
+        $.post(path, form.data())
+            .done(function () {
+                form.onSuccess();
+                vue.callback();
+            })
+            .fail(function (data) {
+                form.onFail(data);
+                vue.callback();
+            });
+    }
+}
+$(window).on('load', function () {
+    $("#preloader").fadeOut("slow");
+});
 
 /* ========================================================================= */
 /*  Welcome Section Slider
  /* ========================================================================= */
 
-$(function() {
+$(function () {
 
-    var Page = (function() {
-        var $navArrows = $( '#nav-arrows' ),
-            $nav = $( '#nav-dots > span' ),
-            slitslider = $( '#slider' ).slitslider( {
-                onBeforeChange : function( slide, pos ) {
+    var Page = (function () {
+        var $navArrows = $('#nav-arrows'),
+            $nav = $('#nav-dots > span'),
+            slitslider = $('#slider').slitslider({
+                onBeforeChange: function (slide, pos) {
 
-                    $nav.removeClass( 'nav-dot-current' );
-                    $nav.eq( pos ).addClass( 'nav-dot-current' );
+                    $nav.removeClass('nav-dot-current');
+                    $nav.eq(pos).addClass('nav-dot-current');
 
                 }
-            } ),
+            }),
 
-            init = function() {
+            init = function () {
 
                 initEvents();
 
             },
-            initEvents = function() {
+            initEvents = function () {
 
                 // add navigation events
-                $navArrows.children( ':last' ).on( 'click', function() {
+                $navArrows.children(':last').on('click', function () {
 
                     slitslider.next();
                     return false;
 
-                } );
+                });
 
-                $navArrows.children( ':first' ).on( 'click', function() {
+                $navArrows.children(':first').on('click', function () {
 
                     slitslider.previous();
                     return false;
 
-                } );
+                });
 
-                $nav.each( function( i ) {
+                $nav.each(function (i) {
 
-                    $( this ).on( 'click', function( event ) {
+                    $(this).on('click', function (event) {
 
-                        var $dot = $( this );
+                        var $dot = $(this);
 
-                        if( !slitslider.isActive() ) {
+                        if (!slitslider.isActive()) {
 
-                            $nav.removeClass( 'nav-dot-current' );
-                            $dot.addClass( 'nav-dot-current' );
+                            $nav.removeClass('nav-dot-current');
+                            $dot.addClass('nav-dot-current');
 
                         }
 
-                        slitslider.jump( i + 1 );
+                        slitslider.jump(i + 1);
                         return false;
 
-                    } );
+                    });
 
-                } );
+                });
 
             };
 
-        return { init : init };
+        return {init: init};
 
     })();
 
     Page.init();
-
 
     /* ========================================================================= */
     /*	Menu item highlighting
@@ -1062,20 +1161,20 @@ $(function() {
         currentClass: 'current',
         easing: 'easeInOutExpo',
         updateHash: true,
-        beforeStart: function() {
-            console.log('begin scrolling');
+        beforeStart: function () {
+            //console.log('begin scrolling');
         },
-        onComplete: function() {
-            console.log('done scrolling');
+        onComplete: function () {
+            //console.log('done scrolling');
         }
     });
 
     $(window).scroll(function () {
         if ($(window).scrollTop() > 400) {
-            $(".navbar-brand a").css("color","#fff");
+            $(".navbar-brand a").css("color", "#fff");
             $("#navigation").removeClass("animated-header");
         } else {
-            $(".navbar-brand a").css("color","inherit");
+            $(".navbar-brand a").css("color", "inherit");
             $("#navigation").addClass("animated-header");
         }
     });
@@ -1087,21 +1186,21 @@ $(function() {
     // Slider Height
     var slideHeight = $(window).height();
 
-    $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height',slideHeight);
+    $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height', slideHeight);
 
-    $(window).resize(function(){'use strict',
-        $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height',slideHeight);
+    $(window).resize(function () {
+        'use strict',
+            $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height', slideHeight);
     });
 
 
-
     $("#works, #testimonial").owlCarousel({
-        navigation : true,
-        pagination : false,
-        slideSpeed : 700,
-        paginationSpeed : 400,
-        singleItem:true,
-        navigationText: ["<i class='fa fa-angle-left fa-lg'></i>","<i class='fa fa-angle-right fa-lg'></i>"]
+        navigation: true,
+        pagination: false,
+        slideSpeed: 700,
+        paginationSpeed: 400,
+        singleItem: true,
+        navigationText: ["<i class='fa fa-angle-left fa-lg'></i>", "<i class='fa fa-angle-right fa-lg'></i>"]
     });
 
 
@@ -1112,126 +1211,126 @@ $(function() {
     $(".fancybox").fancybox({
         padding: 0,
 
-        openEffect : 'elastic',
-        openSpeed  : 650,
+        openEffect: 'elastic',
+        openSpeed: 650,
 
-        closeEffect : 'elastic',
-        closeSpeed  : 550,
+        closeEffect: 'elastic',
+        closeSpeed: 550,
 
-        closeClick : true,
+        closeClick: true,
 
         beforeShow: function () {
             this.title = $(this.element).attr('title');
             this.title = '<h3>' + this.title + '</h3>' + '<p>' + $(this.element).parents('.portfolio-item').find('img').attr('alt') + '</p>';
         },
 
-        helpers : {
-            title : {
+        helpers: {
+            title: {
                 type: 'inside'
             },
-            overlay : {
-                css : {
-                    'background' : 'rgba(0,0,0,0.8)'
+            overlay: {
+                css: {
+                    'background': 'rgba(0,0,0,0.8)'
                 }
             }
         }
     });
 
+    /* ========================================================================= */
+    /*	Contact Us
+     /* ========================================================================= */
+    var contact_us_data = {
+        form: new Form({
+            contact_name: '',
+            contact_subject: '',
+            contact_email: '',
+            contact_message: '',
+            _token: Laravel.csrfToken
+        }),
+        alert_message : 'Message Send Successfully, We will contact you as soon as possible.'
+    };
+    new Vue({
+        el: '#contact_us',
+        data: contact_us_data,
+        methods: {
+            handleIt: function () {
+                this.form.submit('/contact',this);
+            },
+            callback : function(){
+                if(this.form.has_success)
+                {
+                    this.form.message = this.alert_message;
+                }
+            }
+        }
+    });
+    /* ========================================================================= */
+    /*	End Contact Us
+     /* ========================================================================= */
+
+
+    /* ========================================================================= */
+    /*	Billing
+     /* ========================================================================= */
+    var billing_data = {
+        form: new Form({
+            stripeEmail: '',
+            stripeToken: '',
+            checkout_name: '',
+            checkout_last_name: '',
+            checkout_phone: '',
+            checkout_quantity: 1,
+            _token: Laravel.csrfToken
+        }),
+        show_alert: false,
+        alert_message : 'Message Send Successfully, We will contact you as soon as possible.'
+    };
+    new Vue({
+        el: '#billing_stripe',
+        data: billing_data,
+        create:function(){
+            var vue = this;
+            this.stripe = StripeCheckout.configure({
+                key: Laravel.stripeKey,
+                image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+                locale: "auto",
+                token: function (token) {
+                    vue.form.stripeToken = token.id;
+                    vue.form.stripeEmail = token.email;
+                    this.form.submit('/buy_tickets');
+                }
+            });
+        },
+        methods: {
+            buy:function(){
+                var vue = this;
+                this.stripe.open({
+                    name: 'Fantasy Marketing',
+                    description: 'Buying Tickets',
+                    zipCode: true,
+                    amount: Laravel.ticketPrice * vue.form.checkout_quantity
+                });
+            },
+            isValidCheckOut: function() {
+                return (
+                    this.form.checkout_name
+                    && this.form.checkout_last_name
+                    && this.form.checkout_phone
+                    && !isNaN(this.form.checkout_quantity)
+                    && this.form.checkout_quantity > 0
+                );
+            }
+        }
+    });
+    /* ========================================================================= */
+    /*	End Billings
+     /* ========================================================================= */
 });
 
 
-/* ==========  START GOOGLE MAP ========== */
-
-// When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', init);
-
-function init() {
-    // Basic options for a simple Google Map
-    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-
-    var myLatLng = new google.maps.LatLng(22.402789, 91.822156);
-
-    var mapOptions = {
-        zoom: 15,
-        center: myLatLng,
-        disableDefaultUI: true,
-        scrollwheel: false,
-        navigationControl: true,
-        mapTypeControl: false,
-        scaleControl: false,
-        draggable: true,
-
-        // How you would like to style the map.
-        // This is where you would paste any style found on Snazzy Maps.
-        styles: [{
-            featureType: 'water',
-            stylers: [{
-                color: '#46bcec'
-            }, {
-                visibility: 'on'
-            }]
-        }, {
-            featureType: 'landscape',
-            stylers: [{
-                color: '#f2f2f2'
-            }]
-        }, {
-            featureType: 'road',
-            stylers: [{
-                saturation: -100
-            }, {
-                lightness: 45
-            }]
-        }, {
-            featureType: 'road.highway',
-            stylers: [{
-                visibility: 'simplified'
-            }]
-        }, {
-            featureType: 'road.arterial',
-            elementType: 'labels.icon',
-            stylers: [{
-                visibility: 'off'
-            }]
-        }, {
-            featureType: 'administrative',
-            elementType: 'labels.text.fill',
-            stylers: [{
-                color: '#444444'
-            }]
-        }, {
-            featureType: 'transit',
-            stylers: [{
-                visibility: 'off'
-            }]
-        }, {
-            featureType: 'poi',
-            stylers: [{
-                visibility: 'off'
-            }]
-        }]
-    };
-
-    // Get the HTML DOM element that will contain your map
-    // We are using a div with id="map" seen below in the <body>
-    var mapElement = document.getElementById('map-canvas');
-
-    // Create the Google Map using our element and options defined above
-    var map = new google.maps.Map(mapElement, mapOptions);
-
-    // Let's also add a marker while we're at it
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(22.402789, 91.822156),
-        map: map,
-        icon: 'img/icons/map-marker.png',
-    });
-}
-
-// ========== END GOOGLE MAP ========== //
-
-var wow = new WOW ({
-    offset:       75,          // distance to the element when triggering the animation (default is 0)
-    mobile:       false,       // trigger animations on mobile devices (default is true)
+var wow = new WOW({
+    offset: 75,          // distance to the element when triggering the animation (default is 0)
+    mobile: false,       // trigger animations on mobile devices (default is true)
 });
 wow.init();
 

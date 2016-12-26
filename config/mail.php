@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'hello@example.com',
-        'name' => 'Example',
+        'address' => env('DEFAULT_EMAIL','info@fantasymarketing.us'),
+        'name' => 'Fantasy Marketing',
     ],
 
     /*

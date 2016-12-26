@@ -2,18 +2,6 @@
     <div class="container">
         <div class="row text-center">
             <div class="footer-content">
-                <div class="wow animated fadeInDown">
-                    <p>newsletter signup</p>
-                    <p>Get Cool Stuff! We hate spam!</p>
-                </div>
-                <form action="#" method="post" class="subscribe-form wow animated fadeInUp">
-                    <div class="input-field">
-                        <input type="email" class="subscribe form-control" placeholder="Enter Your Email...">
-                        <button type="submit" class="submit-icon">
-                            <i class="fa fa-paper-plane fa-lg"></i>
-                        </button>
-                    </div>
-                </form>
                 <div class="footer-social">
                     <ul>
                         <li class="wow animated zoomIn"><a href="#"><i class="fa fa-thumbs-up fa-3x"></i></a></li>
@@ -23,8 +11,7 @@
                         <li class="wow animated zoomIn" data-wow-delay="1.2s"><a href="#"><i class="fa fa-youtube fa-3x"></i></a></li>
                     </ul>
                 </div>
-
-                <p>Design And developed By <a href="http://themefisher.com/">Themefisher</a>. All rights Reserved</p>
+                <p>© Fantasy Marketing LLC {{date('Y')}}.</p>
             </div>
         </div>
     </div>

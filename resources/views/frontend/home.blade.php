@@ -22,21 +22,29 @@
     <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 </head>
-<body>
+<script>
+    var Laravel = {
+        csrfToken: "{{csrf_token()}}",
+        stripeKey: "{{config('services.stripe.key')}}",
+        ticketPrice: {{$raffle->ticket_cost}}
+    };
+</script>
+<body id="body">
 @include('frontend.includes._header')
-<main class="site-content" role="main">
+<main class="site-content" role="main" id="fantasy_app">
     @include('frontend.includes._slider')
     @include('frontend.includes._about')
     @include('frontend.includes._how_to')
     @include('frontend.includes._gallery')
-    @include('frontend.includes._testimonials')
     @include('frontend.includes._buy_tickets')
-    @include('frontend.includes._social')
+    @include('frontend.includes._testimonials')
     @include('frontend.includes._contact')
 </main>
 @include('frontend.includes._footer')
 
+<script src="https://checkout.stripe.com/checkout.js"></script>
 <script src="/js/app.js"></script>
 <script src="/js/frontend-version.js"></script>
+
 </body>
 </html>

@@ -1,77 +1,74 @@
-/* ========================================================================= */
-/*	Preloader
- /* ========================================================================= */
-
-$(window).on('load', function() { $("#preloader").fadeOut("slow");});
+$(window).on('load', function () {
+    $("#preloader").fadeOut("slow");
+});
 
 /* ========================================================================= */
 /*  Welcome Section Slider
  /* ========================================================================= */
 
-$(function() {
+$(function () {
 
-    var Page = (function() {
-        var $navArrows = $( '#nav-arrows' ),
-            $nav = $( '#nav-dots > span' ),
-            slitslider = $( '#slider' ).slitslider( {
-                onBeforeChange : function( slide, pos ) {
+    var Page = (function () {
+        var $navArrows = $('#nav-arrows'),
+            $nav = $('#nav-dots > span'),
+            slitslider = $('#slider').slitslider({
+                onBeforeChange: function (slide, pos) {
 
-                    $nav.removeClass( 'nav-dot-current' );
-                    $nav.eq( pos ).addClass( 'nav-dot-current' );
+                    $nav.removeClass('nav-dot-current');
+                    $nav.eq(pos).addClass('nav-dot-current');
 
                 }
-            } ),
+            }),
 
-            init = function() {
+            init = function () {
 
                 initEvents();
 
             },
-            initEvents = function() {
+            initEvents = function () {
 
                 // add navigation events
-                $navArrows.children( ':last' ).on( 'click', function() {
+                $navArrows.children(':last').on('click', function () {
 
                     slitslider.next();
                     return false;
 
-                } );
+                });
 
-                $navArrows.children( ':first' ).on( 'click', function() {
+                $navArrows.children(':first').on('click', function () {
 
                     slitslider.previous();
                     return false;
 
-                } );
+                });
 
-                $nav.each( function( i ) {
+                $nav.each(function (i) {
 
-                    $( this ).on( 'click', function( event ) {
+                    $(this).on('click', function (event) {
 
-                        var $dot = $( this );
+                        var $dot = $(this);
 
-                        if( !slitslider.isActive() ) {
+                        if (!slitslider.isActive()) {
 
-                            $nav.removeClass( 'nav-dot-current' );
-                            $dot.addClass( 'nav-dot-current' );
+                            $nav.removeClass('nav-dot-current');
+                            $dot.addClass('nav-dot-current');
 
                         }
 
-                        slitslider.jump( i + 1 );
+                        slitslider.jump(i + 1);
                         return false;
 
-                    } );
+                    });
 
-                } );
+                });
 
             };
 
-        return { init : init };
+        return {init: init};
 
     })();
 
     Page.init();
-
 
     /* ========================================================================= */
     /*	Menu item highlighting
@@ -84,20 +81,20 @@ $(function() {
         currentClass: 'current',
         easing: 'easeInOutExpo',
         updateHash: true,
-        beforeStart: function() {
-            console.log('begin scrolling');
+        beforeStart: function () {
+            //console.log('begin scrolling');
         },
-        onComplete: function() {
-            console.log('done scrolling');
+        onComplete: function () {
+            //console.log('done scrolling');
         }
     });
 
     $(window).scroll(function () {
         if ($(window).scrollTop() > 400) {
-            $(".navbar-brand a").css("color","#fff");
+            $(".navbar-brand a").css("color", "#fff");
             $("#navigation").removeClass("animated-header");
         } else {
-            $(".navbar-brand a").css("color","inherit");
+            $(".navbar-brand a").css("color", "inherit");
             $("#navigation").addClass("animated-header");
         }
     });
@@ -109,21 +106,21 @@ $(function() {
     // Slider Height
     var slideHeight = $(window).height();
 
-    $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height',slideHeight);
+    $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height', slideHeight);
 
-    $(window).resize(function(){'use strict',
-        $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height',slideHeight);
+    $(window).resize(function () {
+        'use strict',
+            $('#home-slider, #slider, .sl-slider, .sl-content-wrapper').css('height', slideHeight);
     });
 
 
-
     $("#works, #testimonial").owlCarousel({
-        navigation : true,
-        pagination : false,
-        slideSpeed : 700,
-        paginationSpeed : 400,
-        singleItem:true,
-        navigationText: ["<i class='fa fa-angle-left fa-lg'></i>","<i class='fa fa-angle-right fa-lg'></i>"]
+        navigation: true,
+        pagination: false,
+        slideSpeed: 700,
+        paginationSpeed: 400,
+        singleItem: true,
+        navigationText: ["<i class='fa fa-angle-left fa-lg'></i>", "<i class='fa fa-angle-right fa-lg'></i>"]
     });
 
 
@@ -134,126 +131,124 @@ $(function() {
     $(".fancybox").fancybox({
         padding: 0,
 
-        openEffect : 'elastic',
-        openSpeed  : 650,
+        openEffect: 'elastic',
+        openSpeed: 650,
 
-        closeEffect : 'elastic',
-        closeSpeed  : 550,
+        closeEffect: 'elastic',
+        closeSpeed: 550,
 
-        closeClick : true,
+        closeClick: true,
 
         beforeShow: function () {
             this.title = $(this.element).attr('title');
             this.title = '<h3>' + this.title + '</h3>' + '<p>' + $(this.element).parents('.portfolio-item').find('img').attr('alt') + '</p>';
         },
 
-        helpers : {
-            title : {
+        helpers: {
+            title: {
                 type: 'inside'
             },
-            overlay : {
-                css : {
-                    'background' : 'rgba(0,0,0,0.8)'
+            overlay: {
+                css: {
+                    'background': 'rgba(0,0,0,0.8)'
                 }
             }
         }
     });
 
+    /* ========================================================================= */
+    /*	Contact Us
+     /* ========================================================================= */
+    var contact_us_data = {
+        form: new Form({
+            contact_name: '',
+            contact_subject: '',
+            contact_email: '',
+            contact_message: '',
+            _token: Laravel.csrfToken
+        }),
+        alert_message : 'Message Send Successfully, We will contact you as soon as possible.'
+    };
+    new Vue({
+        el: '#contact_us',
+        data: contact_us_data,
+        methods: {
+            handleIt: function () {
+                this.form.submit('/contact',this);
+            },
+            callback : function(){
+                if(this.form.has_success)
+                {
+                    this.form.message = this.alert_message;
+                }
+            }
+        }
+    });
+    /* ========================================================================= */
+    /*	End Contact Us
+     /* ========================================================================= */
+
+
+    /* ========================================================================= */
+    /*	Billing
+     /* ========================================================================= */
+    var billing_data = {
+        form: new Form({
+            stripeEmail: '',
+            stripeToken: '',
+            checkout_name: '',
+            checkout_last_name: '',
+            checkout_phone: '',
+            checkout_quantity: 1,
+            _token: Laravel.csrfToken
+        })
+    };
+    new Vue({
+        el: '#billing_stripe',
+        data: billing_data,
+        create:function(){
+            var vue = this;
+            this.stripe = StripeCheckout.configure({
+                key: Laravel.stripeKey,
+                image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+                locale: "auto",
+                token: function (token) {
+                    vue.form.stripeToken = token.id;
+                    vue.form.stripeEmail = token.email;
+                    this.form.submit('/buy_tickets');
+                }
+            });
+        },
+        methods: {
+            buy:function(){
+                var vue = this;
+                this.stripe.open({
+                    name: 'Fantasy Marketing',
+                    description: 'Buying Tickets',
+                    zipCode: true,
+                    amount: Laravel.ticketPrice * vue.form.checkout_quantity
+                });
+            },
+            isValidCheckOut: function() {
+                return (
+                    this.form.checkout_name
+                    && this.form.checkout_last_name
+                    && this.form.checkout_phone
+                    && !isNaN(this.form.checkout_quantity)
+                    && this.form.checkout_quantity > 0
+                );
+            }
+        }
+    });
+    /* ========================================================================= */
+    /*	End Billings
+     /* ========================================================================= */
 });
 
 
-/* ==========  START GOOGLE MAP ========== */
-
-// When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', init);
-
-function init() {
-    // Basic options for a simple Google Map
-    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-
-    var myLatLng = new google.maps.LatLng(22.402789, 91.822156);
-
-    var mapOptions = {
-        zoom: 15,
-        center: myLatLng,
-        disableDefaultUI: true,
-        scrollwheel: false,
-        navigationControl: true,
-        mapTypeControl: false,
-        scaleControl: false,
-        draggable: true,
-
-        // How you would like to style the map.
-        // This is where you would paste any style found on Snazzy Maps.
-        styles: [{
-            featureType: 'water',
-            stylers: [{
-                color: '#46bcec'
-            }, {
-                visibility: 'on'
-            }]
-        }, {
-            featureType: 'landscape',
-            stylers: [{
-                color: '#f2f2f2'
-            }]
-        }, {
-            featureType: 'road',
-            stylers: [{
-                saturation: -100
-            }, {
-                lightness: 45
-            }]
-        }, {
-            featureType: 'road.highway',
-            stylers: [{
-                visibility: 'simplified'
-            }]
-        }, {
-            featureType: 'road.arterial',
-            elementType: 'labels.icon',
-            stylers: [{
-                visibility: 'off'
-            }]
-        }, {
-            featureType: 'administrative',
-            elementType: 'labels.text.fill',
-            stylers: [{
-                color: '#444444'
-            }]
-        }, {
-            featureType: 'transit',
-            stylers: [{
-                visibility: 'off'
-            }]
-        }, {
-            featureType: 'poi',
-            stylers: [{
-                visibility: 'off'
-            }]
-        }]
-    };
-
-    // Get the HTML DOM element that will contain your map
-    // We are using a div with id="map" seen below in the <body>
-    var mapElement = document.getElementById('map-canvas');
-
-    // Create the Google Map using our element and options defined above
-    var map = new google.maps.Map(mapElement, mapOptions);
-
-    // Let's also add a marker while we're at it
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(22.402789, 91.822156),
-        map: map,
-        icon: 'img/icons/map-marker.png',
-    });
-}
-
-// ========== END GOOGLE MAP ========== //
-
-var wow = new WOW ({
-    offset:       75,          // distance to the element when triggering the animation (default is 0)
-    mobile:       false,       // trigger animations on mobile devices (default is true)
+var wow = new WOW({
+    offset: 75,          // distance to the element when triggering the animation (default is 0)
+    mobile: false,       // trigger animations on mobile devices (default is true)
 });
 wow.init();
 

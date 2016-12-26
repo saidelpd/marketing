@@ -13659,10 +13659,8 @@ main > section {
 }
 
 h1.navbar-brand {
-  font-size: 20px;
-  font-weight: 700;
   margin: 0;
-  text-transform: uppercase;
+  padding-top: 5px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -14319,7 +14317,7 @@ textarea.form-control {
 ==============================================================*/
 #footer {
   background-color: #2E2E2E;
-  padding: 70px 0;
+  padding: 20px 0;
   color: #fff;
 }
 
@@ -14464,10 +14462,6 @@ textarea.form-control {
   }
   .testimonial-item > div:after {
     bottom: -35px;
-  }
-  /* price */
-  .price-table {
-    margin-bottom: 50px;
   }
   /* contact form */
   .contact-form {
@@ -14651,6 +14645,22 @@ textarea.form-control {
   .footer-content {
     width: 380px;
   }
+}
+
+.top_5 {
+  margin-top: 5px;
+}
+
+.top_10 {
+  margin-top: 10px;
+}
+
+.top_20 {
+  margin-top: 20px;
+}
+
+.top_50 {
+  margin-top: 50px;
 }
 
 /*# sourceMappingURL=app.css.map */

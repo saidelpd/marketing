@@ -289,11 +289,10 @@ main > section {
 }
 
 h1.navbar-brand {
-    font-size: 20px;
-    font-weight: 700;
     margin: 0;
-    text-transform: uppercase;
+    padding-top: 5px;
 }
+
 
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
@@ -1020,7 +1019,7 @@ textarea.form-control {
 
 #footer {
     background-color: #2E2E2E;
-    padding: 70px 0;
+    padding: 20px 0;
     color: #fff;
 }
 
@@ -1204,10 +1203,6 @@ textarea.form-control {
         bottom: -35px;
     }
 
-/* price */
-    .price-table {
-        margin-bottom: 50px;
-    }
 
 /* contact form */
     .contact-form {

@@ -1,4 +1,3 @@
-
 <section id="home-slider">
     <div id="slider" class="sl-slider-wrapper">
 
@@ -11,7 +10,7 @@
                 <div class="slide-caption">
                     <div class="caption-content">
                         <h2 class="animated fadeInDown">Fantasy Marketing Raffle</h2>
-                        <span class="animated fadeInDown">Register to win a {{$raffle->obj_name}}</span>
+                        <span class="animated fadeInDown">Register to win a BMW M3 2015</span>
                         <a href="#" class="btn btn-blue btn-effect">Buy Tickets</a>
                     </div>
                 </div>
@@ -37,7 +36,7 @@
                 <div class="slide-caption">
                     <div class="caption-content">
                         <h2>Fantasy Marketing Raffle</h2>
-                        <span>With only a {{$raffle->ticketCostPrice()}} dollars you can have this upgraded {{$raffle->obj_name}}</span>
+                        <span>With only a 100 dollars you can have this upgraded BMW M3 2015</span>
                         <a href="#" class="btn btn-blue btn-effect">Buy Tickets</a>
                     </div>
                 </div>
