@@ -59,6 +59,7 @@ class Form {
         delete data.has_success;
         delete data.is_sending;
         delete data.has_error;
+        delete data.message;
         return data;
     }
 
@@ -79,7 +80,7 @@ class Form {
         }
         else if(data.status == 417)
         {
-            this.message = 'Error Con Stripe';
+            this.message = data.responseJSON.status;
         }
         else{
             this.errors.record(data.responseJSON);
@@ -92,11 +93,17 @@ class Form {
         $.post(path, form.data())
             .done(function () {
                 form.onSuccess();
-                vue.callback();
+                form.finishedAjax(vue);
             })
             .fail(function (data) {
                 form.onFail(data);
-                vue.callback();
+                form.finishedAjax(vue);
             });
+    }
+    finishedAjax(vue){
+        if(typeof vue.callback() == 'function') {
+            console.log('aqui se parte');
+            vue.callback();
+        }
     }
 }

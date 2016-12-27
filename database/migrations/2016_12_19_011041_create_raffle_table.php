@@ -21,6 +21,7 @@ class CreateRaffleTable extends Migration
             $table->integer('ticket_cost');
             $table->string('raffle_images_path');
             $table->dateTime('closing_date');
+            $table->enum('status',['open','closed'])->default('open');
             $table->timestamps();
         });
     }

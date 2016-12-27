@@ -16,3 +16,18 @@ Route::post('/contact', ['as' => 'home.contact', 'uses' => 'HomeController@conta
 Route::post('/buy_tickets', ['as' => 'home.buyTickets', 'uses' => 'HomeController@buyTickets']);
 
 
+Route::group(['prefix' => 'fantasy'], function () {
+    Route::get('/dashboard', ['uses' => 'FantasyAdminController@index', 'as' => 'fantasy.dashboard']);
+
+    Route::match(['get', 'post'], '/tickets', ['uses' => 'FantasyAdminController@tickets', 'as' => 'fantasy.tickets']);
+    Route::match(['get', 'post'], '/payments', ['uses' => 'FantasyAdminController@payments', 'as' => 'fantasy.payments']);
+    Route::match(['get', 'post'], '/profile', ['uses' => 'FantasyAdminController@profile', 'as' => 'fantasy.profile']);
+
+
+    Auth::routes();
+});
+
+
+
+
+

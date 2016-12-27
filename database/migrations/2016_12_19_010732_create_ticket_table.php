@@ -15,10 +15,10 @@ class CreateTicketTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('ticket_number')->nullable();
             $table->integer('user_id');
+            $table->integer('payment_id');
             $table->integer('raffle_id');
-            $table->integer('fee');
-            $table->integer('discount');
             $table->timestamps();
         });
     }

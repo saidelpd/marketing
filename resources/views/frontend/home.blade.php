@@ -17,7 +17,7 @@
     <meta name="description" content="Fantasy Marketing Raffle">
     <meta name="keywords" content="raffle, car raffle, tickets, fantasy, marketing, auto">
     <meta name="author" content="Saidel Perez">
-    <title>Fantasy Marketing</title>
+    <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{elixir('css/app.css')}}">
     <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>

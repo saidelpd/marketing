@@ -45,10 +45,9 @@ $factory->define(App\Models\Raffle::class, function (Faker\Generator $faker) {
  */
 $factory->define(App\Models\Ticket::class, function (Faker\Generator $faker) {
     return [
-        'user_id'=>$faker->numberBetween(1,50),
+        'user_id'=>$faker->numberBetween(1,52),
         'raffle_id'=>1,
-        'fee'=>$faker->numberBetween(100,500),
-        'discount'=>0,
+        'payment_id'=>$faker->numberBetween(1,500),
         'created_at'=>$faker->dateTimeBetween('now','3 months')
     ];
 });
@@ -62,5 +61,23 @@ $factory->define(App\Models\RafflePhotos::class, function (Faker\Generator $fake
         'title'=>$faker->realText(50),
         'description'=>$faker->realText(250),
         'path'=>$faker->unique()->numberBetween(1,9).'.jpg'
+    ];
+});
+
+/**
+ * Raffle-Photos Seeder
+ */
+$factory->define(App\Models\Payments::class, function (Faker\Generator $faker) {
+    $ticket_number = $faker->numberBetween(1,10);
+    $charge_amount = $ticket_number * 10000;
+    $fee = ($charge_amount * 2.9 /100) + 30;
+    return [
+            'billing_id'=>str_random(),
+            'raffle_id'=>1,
+            'user_id'=>$faker->numberBetween(1,52),
+            'charge_amount'=>$charge_amount,
+            'fee'=>$fee,
+            'discount'=>0,
+            'tickets_buy'=>$ticket_number,
     ];
 });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubcriptionsTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateSubcriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscriptions', function ($table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('raffle_id');
             $table->integer('user_id');
-            $table->string('name');
-            $table->string('stripe_id');
-            $table->string('stripe_plan');
-            $table->integer('quantity');
-            $table->timestamp('trial_ends_at')->nullable();
-            $table->timestamp('ends_at')->nullable();
+            $table->string('billing_id');
+            $table->integer('charge_amount');
+            $table->integer('tickets_buy');
+            $table->integer('fee');
+            $table->integer('discount')->default(0);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateSubcriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('subscriptions');
+        Schema::drop('payments');
     }
 }

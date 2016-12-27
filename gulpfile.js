@@ -13,8 +13,10 @@ require('laravel-elixir-vue-2');
  |
  */
 elixir(function(mix) {
-    mix.sass('app.scss')
-        .webpack('app.js').version(['public/css/app.css']).copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/build/fonts/bootstrap')
+    mix.sass('app.scss').sass('backend.scss')
+        .webpack('app.js')
+        .version(['public/css/app.css','public/css/backend.css'])
+        .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/build/fonts/bootstrap')
         .scripts([
            'vendor/jquery.singlePageNav.min.js',
            'vendor/jquery.fancybox.pack.js',
@@ -25,5 +27,12 @@ elixir(function(mix) {
             'vendor/wow.min.js',
             'helper.js',
             'frontend.js'
-        ],'public/js/frontend-version.js' )
+        ],'public/js/frontend-version.js').scripts([
+        'vendor/metisMenu.min.js',
+        'vendor/raphael.min.js',
+        'vendor/morris.min.js',
+        'helper.js',
+        'backend.js'
+    ],'public/js/backend-version.js')
+
 });

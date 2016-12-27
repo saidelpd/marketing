@@ -114,7 +114,7 @@ $(function () {
     });
 
 
-    $("#works, #testimonial").owlCarousel({
+    $("#testimonial").owlCarousel({
         navigation: true,
         pagination: false,
         slideSpeed: 700,
@@ -192,6 +192,7 @@ $(function () {
     /* ========================================================================= */
     /*	Billing
      /* ========================================================================= */
+
     var billing_data = {
         form: new Form({
             stripeEmail: '',
@@ -201,23 +202,24 @@ $(function () {
             checkout_phone: '',
             checkout_quantity: 1,
             _token: Laravel.csrfToken
-        })
+        }),
+        stripe:''
     };
-    new Vue({
+ new Vue({
         el: '#billing_stripe',
         data: billing_data,
-        create:function(){
-            var vue = this;
-            this.stripe = StripeCheckout.configure({
-                key: Laravel.stripeKey,
-                image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-                locale: "auto",
-                token: function (token) {
-                    vue.form.stripeToken = token.id;
-                    vue.form.stripeEmail = token.email;
-                    this.form.submit('/buy_tickets');
-                }
-            });
+        created: function(){
+           var vue = this;
+           this.stripe = StripeCheckout.configure({
+            key: Laravel.stripeKey,
+            image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+            locale: "auto",
+            token: function (token) {
+                vue.form.stripeToken = token.id;
+                vue.form.stripeEmail = token.email;
+                vue.form.submit('/buy_tickets',vue);
+            }
+        });
         },
         methods: {
             buy:function(){
@@ -228,6 +230,12 @@ $(function () {
                     zipCode: true,
                     amount: Laravel.ticketPrice * vue.form.checkout_quantity
                 });
+            },
+            callback : function(){
+                if(this.form.has_success)
+                {
+                    this.form.message = 'Payment Process successfully. We will send you a confirmation Email with your tickets and login information.';
+                }
             },
             isValidCheckOut: function() {
                 return (
@@ -240,6 +248,7 @@ $(function () {
             }
         }
     });
+
     /* ========================================================================= */
     /*	End Billings
      /* ========================================================================= */

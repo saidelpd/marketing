@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTicketNumberToTicketTable extends Migration
+class AddTicketStatus extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddTicketNumberToTicketTable extends Migration
      */
     public function up()
     {
-        Schema::table('tickets', function(Blueprint $table)
-        {
-            $table->string('ticket_number')->nullable();
+        Schema::table('tickets', function ($table) {
+             $table->enum('status', ['pending', 'not a winner','winner'])->default('pending');
         });
     }
 
@@ -26,9 +25,8 @@ class AddTicketNumberToTicketTable extends Migration
      */
     public function down()
     {
-        Schema::table('tickets', function(Blueprint $table)
-        {
-            $table->dropColumn('ticket_number');
+        Schema::table('tickets', function ($table) {
+            $table->dropColumn('status');
         });
     }
 }

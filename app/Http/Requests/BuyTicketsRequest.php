@@ -24,11 +24,9 @@ class BuyTicketsRequest extends FormRequest
     public function rules()
     {
         return [
-            'stripeToken'=>'required',
-            'stripeEmail'=>'required|email',
-            'checkout_name'=>'required',
-            'checkout_last_name'=>'required',
-            'checkout_phone'=>'required',
+            'checkout_name'=>'required|max:255',
+            'checkout_last_name'=>'required|max:255',
+            'checkout_phone'=>'required|max:20',
             'checkout_quantity'=>'required|integer|min:1'
         ];
     }
@@ -41,7 +39,7 @@ class BuyTicketsRequest extends FormRequest
         return [
             'checkout_name.required'=>'We need to know your name!',
             'checkout_last_name.required'=>'We need to know your last name!',
-            'checkout_phone.required'=>'We need to know your e-mail address!',
+            'checkout_phone.required'=>'We need to know your phone!',
         ];
     }
 

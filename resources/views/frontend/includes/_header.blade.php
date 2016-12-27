@@ -37,10 +37,11 @@ Fixed Navigation
                 <li><a href="#buy-tickets">Buy Tickets</a></li>
                 <li><a href="#testimonials">Testimonial</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a class="external" href="{{URL::route('login')}}">Login</a></li>
             </ul>
+
         </nav>
         <!-- /main nav -->
-
     </div>
 </header>
 <!--

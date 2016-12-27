@@ -11,7 +11,7 @@
                         <li class="wow animated zoomIn" data-wow-delay="1.2s"><a href="#"><i class="fa fa-youtube fa-3x"></i></a></li>
                     </ul>
                 </div>
-                <p>© Fantasy Marketing LLC {{date('Y')}}.</p>
+                <p>© Fantasy Marketing LLC {{date('Y')}}. <a href="{{URL::route('login')}}">Login</a></p>
             </div>
         </div>
     </div>
