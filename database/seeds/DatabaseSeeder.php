@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
             factory(Ticket::class, 1000)->create();
         }
         if (!RafflePhotos::count()) {
-            factory(RafflePhotos::class, 9)->create();
+            factory(RafflePhotos::class, 3)->create();
         }
         if (!Payments::count()) {
             factory(Payments::class, 500)->create();

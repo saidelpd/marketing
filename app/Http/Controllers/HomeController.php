@@ -6,9 +6,10 @@ use App\Http\Requests\BuyTicketsRequest;
 use App\Http\Requests\HomeContactRequest;
 use App\Mail\ContactUs;
 use App\Models\Raffle;
+use App\Notifications\SendContactUsNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Laravel\Cashier\Cashier;
+
 
 class HomeController extends Controller
 {
@@ -38,7 +39,7 @@ class HomeController extends Controller
      */
     public function contact(HomeContactRequest $request)
     {
-         Mail::send(new ContactUs($request));
+        Mail::send(new ContactUs($request));
     }
 
     /**

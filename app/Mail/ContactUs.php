@@ -10,12 +10,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ContactUs extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels, CssMailTrait;
 
     public $name;
     public $contact_email;
     public $subject;
     public $contact_message;
+
 
     /**
      * Create a new message instance.

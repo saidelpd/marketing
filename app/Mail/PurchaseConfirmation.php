@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class PurchaseConfirmation extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels, CssMailTrait;
 
     public $tickets;
     public $user;

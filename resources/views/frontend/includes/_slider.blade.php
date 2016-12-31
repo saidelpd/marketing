@@ -10,7 +10,7 @@
                 <div class="slide-caption">
                     <div class="caption-content">
                         <h2 class="animated fadeInDown">Fantasy Marketing Raffle</h2>
-                        <span class="animated fadeInDown">Register to win a BMW M3 2015</span>
+                        <span class="animated fadeInDown">Register to win a {{$raffle->obj_name}}</span>
                         <a href="#buy-tickets" class="btn btn-blue btn-effect">Buy Tickets</a>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                 <div class="slide-caption">
                     <div class="caption-content">
                         <h2>Fantasy Marketing Raffle</h2>
-                        <span>Don't Miss the opportunity to win your dream car</span>
+                        <span>Don't Miss the opportunity to win the car of your dreams</span>
                         <a href="#buy-tickets" class="btn btn-blue btn-effect">Buy Tickets</a>
                     </div>
                 </div>

@@ -1,104 +1,71 @@
 @extends('emails.template')
 @section('content')
-    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable">
-        <tr>
-            <td align="center" valign="top" style="padding-top:20px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
-                    <tr>
-                        <td align="center" valign="top">
-                            <!-- // Begin Template Body \\ -->
-                            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+
+
+
+    <tr>
+        <td style="{{ $style['email-body'] }}" width="100%">
+            <table style="{{ $style['email-body_inner'] }}" align="center" width="570" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td style="{{ $fontFamily }} {{ $style['email-body_cell'] }}">
+                        <!-- Greeting -->
+                        <h1 style="{{ $style['header-1'] }}">
+                            Ticket Purchase Confirmation
+                        </h1>
+
+                        <p style="{{ $style['paragraph'] }}">
+                                Purchase ID : {{$confirmation_id}}
+                        </p>
+
+                         <p style="{{ $style['paragraph'] }}">
+                            @include('emails._purchase')
+                        </p>
+
+                        @if($user_password)
+                            <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td valign="top">
-                                        <!-- // Begin Module: Standard Content \\ -->
-                                        <table border="0" cellpadding="20" cellspacing="0" width="100%">
-
-                                            <tr>
-                                                <td valign="top" class="bodyContent">
-                                                    <div mc:edit="std_content00" style="text-align: center">
-                                                        <h3 class="h3" style="text-align: center">Ticket Purchase Confirmation</h3>
-                                                        <p>Purchase ID : {{$confirmation_id}}</p>
-                                                    </div>
-                                                    <div mc:edit="std_content00" style="text-align: center">
-                                                        @include('emails._purchase')
-                                                    </div>
-                                                    @if($user_password)
-                                                        <div mc:edit="std_content00" style="text-align: center">
-                                                        <h5 class="h5" style="text-align: center">Login Information</h5>
-                                                            <table border="0" cellpadding="10" cellspacing="0" width="100%"
-                                                                   class="templateDataTable">
-                                                                <tr>
-                                                                    <th scope="col" valign="top" width="35%"
-                                                                        class="dataTableHeading"
-                                                                        mc:edit="data_table_heading00">
-                                                                        User Name:
-                                                                    </th>
-                                                                    <td  mc:repeatable valign="top" class="dataTableContent"
-                                                                         mc:edit="data_table_content00">
-                                                                        {{ $user->email }}
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="col" valign="top" width="35%"
-                                                                        class="dataTableHeading"
-                                                                        mc:edit="data_table_heading00">
-                                                                        Password:
-                                                                    </th>
-                                                                    <td  mc:repeatable valign="top" class="dataTableContent"
-                                                                         mc:edit="data_table_content00">
-                                                                        {{ $user_password }}
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <p class="text-info"> For more details about this purchase please <a href="{{URL::route('fantasy.login')}}"> login </a>  with the credentials provided.</p>
-                                                        </div>
-                                                        @else
-                                                        <div mc:edit="std_content00" style="text-align: center">
-                                                           <p class="text-info"> For more details about this purchase click <a href="{{URL::route('fantasy.dashboard')}}"> here </a> </p>
-                                                        </div>
-                                                     @endif
-
-
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <!-- // End Module: Standard Content \\ -->
+                                    <td align="center">User Name: </td>
+                                    <td align="center">{{ $user->email }}</td>
+                                </tr>
+                                <tr>
+                                    <td align="center">Password: </td>
+                                    <td align="center">{{ $user_password }}</td>
+                                </tr>
+                            </table>
+                            <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{{URL::route('login')}}"
+                                           style="{{ $fontFamily }} {{ $style['button'] }} {{ $style['button--blue'] }}"
+                                           class="button"
+                                           target="_blank">
+                                           Login in our app for more details.
+                                        </a>
                                     </td>
                                 </tr>
                             </table>
-                            <!-- // End Template Body \\ -->
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" valign="top">
-                            <!-- // Begin Template Footer \\ -->
-                            <table border="0" cellpadding="10" cellspacing="0" width="600" id="templateFooter">
+                        @else
+                            <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td valign="top" class="footerContent">
-
-                                        <!-- // Begin Module: Transactional Footer \\ -->
-                                        <table border="0" cellpadding="10" cellspacing="0" width="100%">
-                                            <tr>
-                                                <td valign="top">
-                                                    <div mc:edit="std_footer">
-                                                        <em>© Fantasy Marketing LLC {{date('Y')}}.</em>
-                                                        <br/>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <!-- // End Module: Transactional Footer \\ -->
+                                    <td align="center">
+                                        <a href="{{URL::route('fantasy.dashboard')}}"
+                                           style="{{ $fontFamily }} {{ $style['button'] }} {{ $style['button--blue'] }}"
+                                           class="button"
+                                           target="_blank">
+                                           Login For More Details
+                                        </a>
                                     </td>
                                 </tr>
                             </table>
-                            <!-- // End Template Footer \\ -->
-                        </td>
-                    </tr>
-                </table>
-                <br/>
-            </td>
-        </tr>
-    </table>
-
+                        @endif
+                        <!-- Salutation -->
+                        <p style="{{ $style['paragraph'] }}">
+                            Regards,<br>{{ config('app.name') }}
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
 @endsection
 

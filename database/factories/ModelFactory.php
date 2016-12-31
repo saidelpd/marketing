@@ -32,10 +32,10 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Raffle::class, function (Faker\Generator $faker) {
    return [
        'prefix'=>'RF',
-       'obj_name'=>'BMW M3 2015',
-       'obj_cost'=>$faker->numberBetween(100000,900000),
+       'obj_name'=>'Porsche GT3 RS40',
+       'obj_cost'=>13000000,
        'ticket_cost'=>10000,
-       'raffle_images_path'=>'/images/raffle/',
+       'raffle_images_path'=>'/images/raffle/1/',
        'closing_date'=>\Carbon\Carbon::now()->addDay(4)->addMonth(3)
    ];
 });
@@ -60,7 +60,7 @@ $factory->define(App\Models\RafflePhotos::class, function (Faker\Generator $fake
         'raffle_id'=>1,
         'title'=>$faker->realText(50),
         'description'=>$faker->realText(250),
-        'path'=>$faker->unique()->numberBetween(1,9).'.jpg'
+        'path'=>$faker->unique()->numberBetween(1,3).'.jpg'
     ];
 });
 

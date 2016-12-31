@@ -23,7 +23,7 @@ Fixed Navigation
 
             <!-- logo -->
             <h1 class="navbar-brand">
-                <a href="#body"><img width="170px" src="/images/logo.jpg"></a>
+                <a href="#body"><img width="170px" src="/images/logo.png"></a>
             </h1>
             <!-- /logo -->
         </div>
