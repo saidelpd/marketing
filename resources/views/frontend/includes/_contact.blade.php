@@ -3,8 +3,7 @@
         <div class="row">
 
             <div class="sec-title text-center wow animated fadeInDown">
-                <h2>Contact</h2>
-                <p>Leave a Message</p>
+                <h2>Contact Us</h2>
             </div>
 
             <div class="col-md-7 contact-form wow animated fadeInLeft" id="contact_us">
@@ -42,9 +41,9 @@
             <div class="col-md-5 wow animated fadeInRight">
                 <address class="contact-details">
                     <h3>Contact Us</h3>
-                    <p><i class="fa fa-pencil"></i>Phoenix Inc.<span> 6825 SW 21 CT., Suite 3</span><span>Davie, FL 33317</span>
+                    <p><i class="fa fa-pencil"></i>Fantasy Marketing.<span> 6825 SW 21 CT., Suite 2</span><span>Davie, FL 33317</span>
                     </p><br>
-                    <p><i class="fa fa-phone"></i>Phone: +1.754.777.6666 </p>
+                    <p><i class="fa fa-phone"></i>Phone: 954.306.8696 </p>
                     <p><i class="fa fa-envelope"></i>info@fantasymarketing.us</p>
                 </address>
             </div>

@@ -32,12 +32,13 @@ Fixed Navigation
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
             <ul id="nav" class="nav navbar-nav">
                 <li><a href="#body">Home</a></li>
-                <li><a href="#how-to">How to</a></li>
-                <li><a href="#gallery">Raffle Gallery</a></li>
-                <li><a href="#buy-tickets">Buy Tickets</a></li>
-                <li><a href="#testimonials">Testimonial</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a class="external" href="{{URL::route('login')}}">Login</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#how-it-works">How it Works</a></li>
+                <li><a href="#prize">Grand Prize</a></li>
+                <li><a href="#buy-tickets">Enter To Win</a></li>
+                <li><a href="#charity">Charity Details</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+              <!--  <li><a class="external" href="{{URL::route('login')}}">Login</a></li> -->
             </ul>
 
         </nav>

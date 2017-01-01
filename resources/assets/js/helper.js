@@ -102,7 +102,6 @@ class Form {
     }
     finishedAjax(vue){
         if(typeof vue.callback() == 'function') {
-            console.log('aqui se parte');
             vue.callback();
         }
     }

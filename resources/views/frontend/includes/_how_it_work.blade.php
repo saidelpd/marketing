@@ -1,8 +1,8 @@
-<section id="how-to">
+<section id="how-it-works">
     <div class="container">
         <div class="row">
             <div class="sec-title text-center">
-                <h2 class="wow animated bounceInLeft">How this work</h2>
+                <h2 class="wow animated bounceInLeft">How it works</h2>
                 <p class="wow animated bounceInRight">Is easy as one two three, get tickets for
                     only {{$raffle->ticketCostPrice()}}</p>
             </div>

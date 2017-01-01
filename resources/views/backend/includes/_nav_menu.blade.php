@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="{{URL::route('fantasy.dashboard')}}">
-        <img width="150px" src="/images/logo.jpg">
+        <img width="150px" src="/images/logo.png">
     </a>
 </div>
 <!-- /.navbar-header -->

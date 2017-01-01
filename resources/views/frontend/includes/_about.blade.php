@@ -1,11 +1,10 @@
-<section id="about" >
+<section id="about">
     <div class="container">
         <div class="row">
             <div class="col-md-11 col-md-offset-1 wow animated fadeInRight">
                 <div class="welcome-block">
-                    <h3>Welcome To Our Site</h3>
-                    <div class="message-body">
-                        <img src="/images/member-1.jpg" class="pull-left" alt="member">
+                    <h3>About Us</h3>
+                    <div class="message-body text-justify">
                         <p>Fantasy Marketing is a group of professionals dedicated to providing fund raising opportunities to 501(C)(3) Charities and Foundations. </p>
                         <p>Attracting attention to a Charitable Partner's fund raising campaign using the platform of a ‘raffle’ provides very affordable participation. Coupled with propriety marketing strategies, a rich network within the world of exotic automobile enthusiasts, targeted publicity and direct mail efforts within the community served by the Charitable Organization, ensures the success of every campaign undertaken.  </p>
                         <p>The raffle offering and prize drawing marketing efforts are compiled in a collaborative manner with our partners to maximize publicity and the exposure of the organization's charitable purpose.</p>

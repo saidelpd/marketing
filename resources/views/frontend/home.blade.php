@@ -34,10 +34,10 @@
 <main class="site-content" role="main" id="fantasy_app">
     @include('frontend.includes._slider')
     @include('frontend.includes._about')
-    @include('frontend.includes._how_to')
-    @include('frontend.includes._gallery')
+    @include('frontend.includes._how_it_work')
+    @include('frontend.includes._prize')
     @include('frontend.includes._buy_tickets')
-    @include('frontend.includes._testimonials')
+    @include('frontend.includes._charity')
     @include('frontend.includes._contact')
 </main>
 @include('frontend.includes._footer')

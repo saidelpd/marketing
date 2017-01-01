@@ -2,7 +2,7 @@
     <div class="container" id="billing_stripe">
         <div class="row">
             <div class="sec-title text-center">
-                <h2 class="wow animated bounceInLeft">Buy Tickets</h2>
+                <h2 class="wow animated bounceInLeft">Enter To Win</h2>
                 <p class="wow animated bounceInRight text-info">Fantasy Marketing LLC don't share personal information with other companies, we only use your data to contact you in case of winning.
                     When you completed the checkout form you will be registered in our raffle, to review the raffle status or buy more tickets click
                     <a class="text-warning" href="{{URL::route('login')}}">login</a>
