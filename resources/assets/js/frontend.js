@@ -167,27 +167,26 @@ $(function () {
             contact_message: '',
             _token: Laravel.csrfToken
         }),
-        alert_message : 'Message Send Successfully, We will contact you as soon as possible.'
+        has_success: true
     };
     new Vue({
         el: '#contact_us',
         data: contact_us_data,
         methods: {
             handleIt: function () {
-                this.form.submit('/contact',this);
-            },
-            callback : function(){
-                if(this.form.has_success)
-                {
-                    this.form.message = this.alert_message;
-                }
+                var vue = this;
+                this.form.submit('/contact').then(function(){
+                    vue.form.message = 'Message Send Successfully, We will contact you as soon as possible.';
+                    vue.has_success = true;
+                }).catch(function () {
+                    vue.has_success = false;
+                });
             }
         }
     });
     /* ========================================================================= */
     /*	End Contact Us
      /* ========================================================================= */
-
 
     /* ========================================================================= */
     /*	Billing
@@ -201,9 +200,14 @@ $(function () {
             checkout_last_name: '',
             checkout_phone: '',
             checkout_quantity: 1,
+            checkout_address: '',
+            checkout_city: '',
+            checkout_state: 0,
+            checkout_zip: '',
             _token: Laravel.csrfToken
         }),
-        stripe:''
+        stripe:'',
+        has_success:true
     };
  new Vue({
         el: '#billing_stripe',
@@ -212,12 +216,21 @@ $(function () {
            var vue = this;
            this.stripe = StripeCheckout.configure({
             key: Laravel.stripeKey,
-            image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+            image: 'http://67.205.186.50/images/logo.png',
             locale: "auto",
             token: function (token) {
                 vue.form.stripeToken = token.id;
                 vue.form.stripeEmail = token.email;
-                vue.form.submit('/buy_tickets',vue);
+                vue.form.submit('/buy_tickets').then(function(){
+                    vue.form.message = 'Payment Process successfully. We will send you a confirmation Email with your tickets and login information.';
+                    vue.has_success = true;
+                    vue.form.checkout_quantity = 1;
+                    vue.form.checkout_state = 0;
+                }).catch(function () {
+                    vue.has_success = false;
+                    vue.form.checkout_quantity = 1;
+                    vue.form.checkout_state = 0;
+                });
             }
         });
         },
@@ -231,17 +244,15 @@ $(function () {
                     amount: Laravel.ticketPrice * vue.form.checkout_quantity
                 });
             },
-            callback : function(){
-                if(this.form.has_success)
-                {
-                    this.form.message = 'Payment Process successfully. We will send you a confirmation Email with your tickets and login information.';
-                }
-            },
             isValidCheckOut: function() {
                 return (
-                    this.form.checkout_name
-                    && this.form.checkout_last_name
-                    && this.form.checkout_phone
+                    (this.form.checkout_name && this.form.checkout_name.length <= 255)
+                    && (this.form.checkout_last_name && this.form.checkout_last_name.length <= 255)
+                    && (this.form.checkout_phone.length > 8 && this.form.checkout_phone.length <= 15)
+                    && (this.form.checkout_address && this.form.checkout_address.length <= 255)
+                    && (this.form.checkout_city && this.form.checkout_city.length <= 50)
+                    && (this.form.checkout_state !=0 && this.form.checkout_state.length <= 3)
+                    && (this.form.checkout_zip.length > 4 && this.form.checkout_zip.length <= 10)
                     && !isNaN(this.form.checkout_quantity)
                     && this.form.checkout_quantity > 0
                 );

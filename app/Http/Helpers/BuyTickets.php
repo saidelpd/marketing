@@ -116,7 +116,11 @@ class BuyTickets
                 'last_name' => $this->request->checkout_last_name,
                 'email' => $this->request->stripeEmail,
                 'phone' => $this->request->checkout_phone,
-                'password' => Hash::make($this->user_password)
+                'password' => Hash::make($this->user_password),
+                'address' => $this->request->checkout_address,
+                'city' => $this->request->checkout_city,
+                'state' => $this->request->checkout_state,
+                'zip' => $this->request->checkout_zip
             ]);
         }
         /**

@@ -5,7 +5,7 @@
         @if(count($tickets))
             <div class="row">
                 <div class="col-sm-6">
-                    {{$tickets->render()}}
+                    {{ $tickets->links()}}
                 </div>
                 <div class="col-sm-6">
                     <form class="form-inline">
@@ -13,12 +13,12 @@
                             <label for="exampleInputName2">Ticket Number</label>
                             <input type="text" class="form-control" name="ticket_number" placeholder="Ticket Number">
                         </div>
-                        @if(count($users_list))
+                        @if(count($user_list))
                         <div class="form-group">
                             <label for="exampleInputEmail2">Owner</label>
                             <select class="form-control" name="owner">
                                 <option value="0">Select One User</option>
-                                @foreach($users_list as $list)
+                                @foreach($user_list as $list)
                                     <option value="{{$list->id}}">{{$list->name}} {{$list->last_name}}</option>
                                     @endforeach
                             </select>
@@ -37,8 +37,11 @@
                     @endif
                     <th class="text-center">Ticket Number</th>
                     <th class="text-center">Status</th>
+                    <th class="text-center">Purchase Date</th>
                     <th class="text-center">Price</th>
+                    @if($user->isAdmin())
                     <th class="text-center">View Payment</th>
+                    @endif
                 </tr>
                 @foreach($tickets as $ticket)
                     <tr>
@@ -48,13 +51,19 @@
                         @endif
                         <td class="text-center">{{$ticket->ticket_number}}</td>
                         <td class="text-center">{!! $ticket->getStatusLabel() !!}</td>
+                        <td class="text-center">{{$ticket->created_at->format('m/d/Y h:i:s A')}}</td>
                         <td class="text-right">@if($ticket->raffle) {{$ticket->raffle->ticketCostPrice()}} @endif</td>
-                        <td class="text-center">@if($ticket->payment) <a
-                                    href="/fantasy/payments/{{$ticket->payment->billing_id}}"> View</a> @endif</td>
+                        @if($user->isAdmin())
+                        <td class="text-center">
+                            @if($ticket->payment)
+                                <a href="/fantasy/payments/{{$ticket->payment->billing_id}}"> View</a>
+                            @endif
+                        </td>
+                        @endif
                     </tr>
                 @endforeach
             </table>
-            {{$tickets->render()}}
+            {{$tickets->links()}}
         @else
             <div class="alert alert-info">
                 Tickets Not Found

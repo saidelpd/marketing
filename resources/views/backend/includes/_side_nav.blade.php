@@ -17,14 +17,17 @@
             <li>
                 <a href="{{URL::route('fantasy.payments')}}"><i class="fa fa-credit-card fa-fw"></i> Payments</a>
             </li>
+            @if(Auth::user()->isAdmin())
             <li>
-                <a href="{{URL::route('fantasy.profile')}}"><i class="fa fa-user fa-fw"></i> Profile</a>
+                <a href="{{URL::route('fantasy.users')}}"><i class="fa fa-users fa-fw"></i> Users</a>
+            </li>
+            @endif
+            <li>
+                <a href="{{URL::route('fantasy.myProfile')}}"><i class="fa fa-user fa-fw"></i> My Profile</a>
             </li>
             <li>
                 <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-unlock fa-fw"></i> Logout</a>
             </li>
-
-
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

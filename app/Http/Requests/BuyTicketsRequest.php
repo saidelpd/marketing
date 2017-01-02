@@ -26,7 +26,11 @@ class BuyTicketsRequest extends FormRequest
         return [
             'checkout_name'=>'required|max:255',
             'checkout_last_name'=>'required|max:255',
-            'checkout_phone'=>'required|max:20',
+            'checkout_phone'=>'required|max:15',
+            'checkout_address'=>'required|max:255',
+            'checkout_city'=>'required|max:50',
+            'checkout_state'=>'required|max:2',
+            'checkout_zip'=>'required|max:10',
             'checkout_quantity'=>'required|integer|min:1'
         ];
     }
@@ -40,6 +44,11 @@ class BuyTicketsRequest extends FormRequest
             'checkout_name.required'=>'We need to know your name!',
             'checkout_last_name.required'=>'We need to know your last name!',
             'checkout_phone.required'=>'We need to know your phone!',
+            'checkout_phone.max'=>'The phone may not be greater than 20 characters.',
+            'checkout_address.required'=>'Address field is required',
+            'checkout_address.max'=>'The address may not be greater than 255 characters.',
+            'checkout_state.required'=>'Please Select State',
+            'checkout_state.max'=>'Invalid State Selected.',
         ];
     }
 

@@ -15,7 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name','last_name', 'email', 'password','phone','permissions'];
+    protected $fillable = ['name','last_name', 'email', 'password', 'phone','permissions','address','city','state','zip'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -34,6 +34,30 @@ class User extends Authenticatable
     {
        return $this->hasMany(Ticket::class);
     }
+
+    /**
+     * return all payments done by this user
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function payments()
+    {
+        return $this->hasMany(Payments::class);
+    }
+
+    /**
+     * return Total Payments Done By This User
+     */
+    public function getIncomeAmount()
+    {
+        try{
+            return $this->payments->sum('income');
+        }
+        catch (\Exception $ex)
+        {
+            return 0;
+        }
+    }
+
 
     /**
      * rewrite password reset notification

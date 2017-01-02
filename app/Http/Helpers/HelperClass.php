@@ -74,4 +74,68 @@ abstract class HelperClass
         return $dash_str;
     }
 
+
+    /**
+     * US States
+     * @return array
+     */
+    public static function usStates($acronym = false)
+    {
+        return ['AL' => 'Alabama'.($acronym?' (AL)':''),
+            'AK' => 'Alaska'.($acronym?' (AK)':''),
+            'AZ' => 'Arizona'.($acronym?' (AZ)':''),
+            'AR' => 'Arkansas'.($acronym?' (AR)':''),
+            'CA' => 'California'.($acronym?' (CA)':''),
+            'CO' => 'Colorado'.($acronym?' (CO)':''),
+            'COS' => 'Colorado Springs'.($acronym?' (COS)':''),
+            'CT' => 'Connecticut'.($acronym?' (CT)':''),
+            'DE' => 'Delaware'.($acronym?' (DE)':''),
+            'DC' => 'District of Columbia'.($acronym?' (DC)':''),
+            'FL' => 'Florida'.($acronym?' (FL)':''),
+            'GA' => 'Georgia'.($acronym?' (GA)':''),
+            'HI' => 'Hawaii'.($acronym?' (HI)':''),
+            'ID' => 'Idaho'.($acronym?' (ID)':''),
+            'IL' => 'Illinois'.($acronym?' (IL)':''),
+            'IN' => 'Indiana'.($acronym?' (IN)':''),
+            'IA' => 'Iowa'.($acronym?' (IA)':''),
+            'KS' => 'Kansas'.($acronym?' (KS)':''),
+            'KY' => 'Kentucky'.($acronym?' (KY)':''),
+            'LA' => 'Louisiana'.($acronym? ' (LA)':''),
+            'ME' => 'Maine'.($acronym? ' (ME)':''),
+            'MD' => 'Maryland'.($acronym? ' (MD)':''),
+            'MA' => 'Massachusetts'.($acronym? ' (MA)':''),
+            'MI' => 'Michigan'.($acronym? ' (MI)':''),
+            'MN' => 'Minnesota'.($acronym? ' (MN)':''),
+            'MS' => 'Mississippi'.($acronym? ' (MS)':''),
+            'MO' => 'Missouri'.($acronym? ' (MO)':''),
+            'MT' => 'Montana'.($acronym? ' (MT)':''),
+            'NE' => 'Nebraska'.($acronym? ' (NE)':''),
+            'NV' => 'Nevada'.($acronym? ' (NV)':''),
+            'NH' => 'New Hampshire'.($acronym?' (NH)':''),
+            'NJ' => 'New Jersey'.($acronym?' (NJ)':''),
+            'NM' => 'New Mexico'.($acronym?' (NM)':''),
+            'NY' => 'New York'.($acronym?' (NY)':''),
+            'NC' => 'North Carolina'.($acronym?' (NC)':''),
+            'ND' => 'North Dakota'.($acronym?' (ND)':''),
+            'OH' => 'Ohio'.($acronym?' (OH)':''),
+            'OK' => 'Oklahoma'.($acronym?' (OK)':''),
+            'OR' => 'Oregon'.($acronym?' (OR)':''),
+            'PA' => 'Pennsylvania'.($acronym?' (PA)':''),
+            'RI' => 'Rhode Island'.($acronym?' (RI)':''),
+            'SC' => 'South Carolina'.($acronym?' (SC)':''),
+            'SD' => 'South Dakota'.($acronym?' (SD)':''),
+            'TN' => 'Tennessee Central'.($acronym?' (TN)':''),
+            'KTN' => 'Tennessee Eastern'.($acronym?' (KTN)':''),
+            'TX' => 'Texas'.($acronym?' (TX)':''),
+            'UT' => 'Utah'.($acronym?' (UT)':''),
+            'VT' => 'Vermont'.($acronym?' (VT)':''),
+            'VA' => 'Virginia'.($acronym?' (VA)':''),
+            'WA' => 'Washington'.($acronym?' (WA)':''),
+            'WV' => 'West Virginia'.($acronym?' (WV)':''),
+            'WI' => 'Wisconsin'.($acronym?' (WI)':''),
+            'WY' => 'Wyoming'.($acronym?' (WY)':''),
+        ];
+    }
+
+
 }

@@ -17,22 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         if (!User::count()) {
-            User::create(
-                ['name' => 'Marc',
-                    'last_name' => 'Segal',
-                    'email' => 'marc@fantasymarketing.us',
-                    'password' => \Illuminate\Support\Facades\Hash::make('FantasyAdminTest2231!@'),
-                    'phone' => 9543708042,
-                    'permissions' => 'admin'
-                ]);
-            User::create(
-                ['name' => 'Saidel',
-                    'last_name' => 'Perez',
-                    'email' => 'saidelpd@gmail.com',
-                    'password' => \Illuminate\Support\Facades\Hash::make('kurtCobain'),
-                    'phone' => 7867791558,
-                    'permissions' => 'admin'
-                ]);
+            $this->addAdmins();
             factory(User::class, 50)->create();
         }
         if (!Raffle::count()) {
@@ -48,6 +33,37 @@ class DatabaseSeeder extends Seeder
             factory(Payments::class, 500)->create();
         }
 
+    }
+
+    /**
+     * Add Admins Users
+     */
+    private function addAdmins()
+    {
+        User::create(
+            ['name' => 'Marc',
+                'last_name' => 'Segal',
+                'email' => 'marc@fantasymarketing.us',
+                'password' => \Illuminate\Support\Facades\Hash::make('FantasyAdminTest2231!@'),
+                'phone' => 9543708042,
+                'permissions' => 'admin',
+                'address' => '6825 SW 21 CT., Suite 2',
+                'city' => 'Davie',
+                'state' => 'FL',
+                'zip' => '33317'
+            ]);
+        User::create(
+            ['name' => 'Saidel',
+                'last_name' => 'Perez',
+                'email' => 'saidelpd@gmail.com',
+                'password' => \Illuminate\Support\Facades\Hash::make('kurtcobain85'),
+                'phone' => 7867791558,
+                'permissions' => 'admin',
+                'address' => '7520 BrookHaven Ct',
+                'city' => 'Tampa',
+                'state' => 'FL',
+                'zip' => '33634'
+            ]);
     }
 
 }

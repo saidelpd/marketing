@@ -25,13 +25,9 @@ elixir(function(mix) {
             'vendor/jquery.slitslider.js',
             'vendor/jquery.ba-cond.min.js',
             'vendor/wow.min.js',
-            'helper.js',
             'frontend.js'
         ],'public/js/frontend-version.js').scripts([
         'vendor/metisMenu.min.js',
-        'vendor/raphael.min.js',
-        'vendor/morris.min.js',
-        'helper.js',
         'backend.js'
     ],'public/js/backend-version.js')
 

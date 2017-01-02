@@ -21,7 +21,11 @@ Route::group(['prefix' => 'fantasy'], function () {
 
     Route::match(['get', 'post'], '/tickets', ['uses' => 'FantasyAdminController@tickets', 'as' => 'fantasy.tickets']);
     Route::match(['get', 'post'], '/payments', ['uses' => 'FantasyAdminController@payments', 'as' => 'fantasy.payments']);
-    Route::match(['get', 'post'], '/profile', ['uses' => 'FantasyAdminController@profile', 'as' => 'fantasy.profile']);
+    Route::match(['get', 'post'], '/users', ['uses' => 'FantasyAdminController@users', 'as' => 'fantasy.users']);
+
+    Route::get('/profile', ['uses' => 'FantasyAdminController@myProfile', 'as' => 'fantasy.myProfile']);
+
+    Route::post('/user_view_notification', ['uses' => 'FantasyAdminController@userViewNotification', 'as' => 'fantasy.userViewNotification']);
 
 
     Auth::routes();

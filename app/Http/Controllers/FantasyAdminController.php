@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Helpers\HelperClass;
-use App\Models\Payments;
+
+
+use App\Http\Requests\NotificationsRequest;
 use App\Models\Raffle;
-use App\Models\Ticket;
 use App\Models\User;
+use App\Notifications\UsersViewNotification;
 use Illuminate\Http\Request;
+/**
+ * Jobs
+ */
+use App\Jobs\Fantasy\DashboardJob;
+use App\Jobs\Fantasy\TicketsViewJob;
+use App\Jobs\Fantasy\PaymentsViewJob;
+use App\Jobs\Fantasy\UsersViewJob;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class FantasyAdminController extends Controller
 {
@@ -24,28 +33,13 @@ class FantasyAdminController extends Controller
         $this->raffle = $raffle::open()->first();
     }
 
-
+    /**
+     * Load Dashboard Page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        $page_title = 'Dashboard';
-        $open_raffle = $this->raffle;
-        $user = Auth::user();
-        $total_users = $total_income = $total_tickets = 0;
-        $latest_tickets = Ticket::take(15)->orderBy('id','Desc');
-        if(!$user->isAdmin())
-        {
-            $latest_tickets = $latest_tickets->where('user_id',$user->id);
-        }
-        else{
-            $payments = Payments::where('raffle_id',$open_raffle->id)
-                ->get(['charge_amount','fee','discount']);
-            $total_payments = $payments->count();
-            $total_income = HelperClass::currency($payments->sum('income'));
-            $total_users = User::count();
-            $total_tickets = Ticket::where('raffle_id',$open_raffle->id)->count();
-        }
-        $latest_tickets =  $latest_tickets->get();
-        return view('backend.home',compact('user','open_raffle','latest_tickets','total_users','total_income','total_tickets','total_payments','page_title'));
+       return view('backend.home',get_object_vars($this->dispatchNow(new DashboardJob($this->raffle))));
     }
 
     /**
@@ -55,35 +49,7 @@ class FantasyAdminController extends Controller
      */
      public function tickets(Request $request)
      {
-         $page_title = 'Tickets';
-         $open_raffle = $this->raffle;
-         $user = Auth::user();
-         $users_list = null;
-         $tickets = Ticket::with([
-                 'raffle'=>function($r){$r->select('id','obj_name','ticket_cost');},
-                 'user'=>function($u){$u->select('id','name','last_name');},
-                 'payment'=>function($p){$p->select('id','billing_id');}
-             ]);
-         /**
-          * Add Filters
-          */
-         if($request->ticket_number)
-         {
-             $tickets = $tickets->where('ticket_number',$request->ticket_number);
-         }
-         if($request->owner && $request->owner !=0 )
-         {
-             $tickets = $tickets->where('user_id',$request->owner);
-         }
-         if(!$user->isAdmin())
-         {
-             $tickets = $tickets->where('user_id',$user->id);
-         }
-         else{
-             $users_list = User::orderBy('name')->get(['name','last_name','id']);
-         }
-         $tickets =  $tickets->paginate(25)->appends(['owner'=>$request->owner]);
-         return view('backend.tickets',compact('page_title','open_raffle','tickets','user','users_list'));
+         return view('backend.tickets',get_object_vars($this->dispatchNow(new TicketsViewJob($this->raffle,$request))));
      }
 
     /**
@@ -93,37 +59,41 @@ class FantasyAdminController extends Controller
      */
      public function payments(Request $request)
      {
-         $page_title = 'Payments';
-         $open_raffle = $this->raffle;
-         $user = Auth::user();
-         $users_list = null;
-         $payments = Payments::with([
-             'raffle'=>function($r){$r->select('id','obj_name','ticket_cost');},
-             'user'=>function($u){$u->select('id','name','last_name');},
-             'tickets'=>function($p){$p->select('id','ticket_number','payment_id');}
-          ]);
-         /**
-          * Add Filters
-          */
-         if($request->payment_id)
-         {
-             $payments = $payments->where('billing_id',$request->payment_id);
-         }
-         if($request->owner && $request->owner !=0 )
-         {
-             $payments = $payments->where('user_id',$request->owner);
-         }
-         if(!$user->isAdmin())
-         {
-             $payments = $payments->where('user_id',$user->id);
-         }
-         else{
-             $users_list = User::orderBy('name')->get(['name','last_name','id']);
-         }
-         $payments =  $payments->paginate(25)->appends(['owner'=>$request->owner]);
-
-         return view('backend.payments',compact('page_title','open_raffle','payments','user','users_list'));
+         return view('backend.payments',get_object_vars($this->dispatchNow(new PaymentsViewJob($this->raffle,$request))));
      }
+
+    /**
+     * Show Users View
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function users(Request $request)
+    {
+        return view('backend.users', get_object_vars($this->dispatchNow(new UsersViewJob($this->raffle,$request))));
+    }
+
+
+    /**
+     * Load Profile Info
+     */
+    public function myProfile()
+    {
+        $title = 'My Profile';
+        $user = Auth::user();
+        $open_raffle = $this->raffle;
+        return view('backend.profile', compact('user','open_raffle','title'));
+    }
+
+    /**
+     * Send User Notification
+     * @param NotificationsRequest $request
+     */
+    public function userViewNotification(NotificationsRequest $request)
+    {
+        ($request->notification_user == 'all')
+            ? Notification::send(User::all(),new UsersViewNotification($request->notification_message))
+            : User::where('email', $request->notification_user)->firstOrFail()->notify(new UsersViewNotification($request->notification_message));
+    }
 
 
 }

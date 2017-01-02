@@ -16,6 +16,7 @@
  */
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
+
     return [
         'name' => $faker->firstName,
         'last_name' => $faker->lastName,
@@ -23,6 +24,10 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'phone' => $faker->phoneNumber,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'address' => $faker->streetAddress,
+        'city' => $faker->city,
+        'state' => $faker->stateAbbr,
+        'zip' => $faker->postcode
     ];
 });
 

@@ -32,32 +32,20 @@
                                     <td align="center">{{ $user_password }}</td>
                                 </tr>
                             </table>
-                            <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center">
-                                        <a href="{{URL::route('login')}}"
-                                           style="{{ $fontFamily }} {{ $style['button'] }} {{ $style['button--blue'] }}"
-                                           class="button"
-                                           target="_blank">
-                                           Login in our app for more details.
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-                        @else
-                            <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center">
-                                        <a href="{{URL::route('fantasy.dashboard')}}"
-                                           style="{{ $fontFamily }} {{ $style['button'] }} {{ $style['button--blue'] }}"
-                                           class="button"
-                                           target="_blank">
-                                           Login For More Details
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
                         @endif
+                        <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td align="center">
+                                    <a href="{{URL::route('login')}}"
+                                       style="{{ $fontFamily }} {{ $style['button'] }} {{ $style['button--blue'] }}"
+                                       class="button"
+                                       target="_blank">
+                                        Login For More Details
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+
                         <!-- Salutation -->
                         <p style="{{ $style['paragraph'] }}">
                             Regards,<br>{{ config('app.name') }}

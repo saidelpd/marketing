@@ -9,6 +9,12 @@
     <link href="{{elixir('css/backend.css')}}" rel="stylesheet">
 </head>
 
+<script>
+    var Laravel = {
+        csrfToken: "{{csrf_token()}}",
+        stripeKey: "{{config('services.stripe.key')}}"
+    };
+</script>
 
 <body>
 
