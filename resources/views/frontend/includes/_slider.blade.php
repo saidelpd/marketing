@@ -2,12 +2,10 @@
     <div id="slider" class="sl-slider-wrapper">
 
         <div class="sl-slider">
-
+            @foreach($raffle->photos as $photo)
             <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25"
                  data-slice1-scale="2" data-slice2-scale="2">
-
-                <div class="bg-img bg-img-1"></div>
-
+                <div class="bg-img" style="background-image: url('{{$raffle->raffle_images_path.$photo->path}}')"></div>
                 <div class="slide-caption">
                     <div class="caption-content">
                         <h2 class="animated fadeInDown">Fantasy Marketing Raffle</h2>
@@ -15,14 +13,12 @@
                         <a href="#buy-tickets" class="btn btn-blue btn-effect">Enter To Win</a>
                     </div>
                 </div>
-
             </div>
+            @endforeach
         </div><!-- /sl-slider -->
 
         <div class="content slider-logos" style="position: absolute;display: block !important;">
-
         </div>
-
         <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
             <a href="javascript:;" class="sl-prev">
                 <i class="fa fa-angle-left fa-3x"></i>
@@ -41,7 +37,6 @@
                 <div class="col-sm-3"><a href="http://www.pbgpredators.org" target="_blank"><img src="/images/logos/predators.png"></a></div>
             </div>
             <span class="nav-dot-current"></span>
-            <span></span>
             <span></span>
             <span></span>
         </nav>

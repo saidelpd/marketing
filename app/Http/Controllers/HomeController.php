@@ -7,7 +7,6 @@ use App\Http\Requests\HomeContactRequest;
 use App\Mail\ContactUs;
 use App\Models\Raffle;
 use App\Notifications\SendContactUsNotification;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -21,7 +20,9 @@ class HomeController extends Controller
      */
     public function __construct(Raffle $raffle)
     {
-        $this->raffle = $raffle::with('photos')->open()->first();
+        $this->raffle = $raffle::with(['photos'=>function($p){
+            $p->orderBy('path');
+        }])->open()->first();
     }
 
     /**

@@ -11,7 +11,6 @@
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{elixir('css/app.css')}}">
     <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 </head>
 <script>
     var Laravel = {

@@ -3,8 +3,7 @@
         <div class="row">
             <div class="sec-title text-center">
                 <h2 class="wow animated bounceInLeft">How it works</h2>
-                <p class="wow animated bounceInRight">Is easy as one two three, get tickets for
-                    only {{$raffle->ticketCostPrice()}}</p>
+                <p class="wow animated bounceInRight"><a href="#">Click here for Officials Rules</a></p>
             </div>
 
             <div class="col-md-4 col-sm-6 col-xs-12 text-center wow animated zoomIn">
@@ -35,7 +34,7 @@
                         <i class="fa fa-clock-o fa-3x"></i>
                     </div>
                     <h3>WIN A {{$raffle->obj_name}}</h3>
-                    <p>If you have the winner ticket you will be contacted through the phone and email registered in our
+                    <p>If you have the winning ticket you will be contacted through the phone and email registered in our
                         system. </p>
                 </div>
             </div>
