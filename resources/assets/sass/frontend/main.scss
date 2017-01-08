@@ -71,6 +71,13 @@ main > section {
     color: #fff;
 }
 
+.btn-red {
+    background-color: rgba(255,0,0, 0.78);
+    box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.15) inset;
+    padding: 15px 55px;
+    color: #fff;
+}
+
 .btn-border {
     border: 2px solid #fff;
     color: #fff;
@@ -348,7 +355,7 @@ h1.navbar-brand {
     min-height: 100%;
     position: absolute;
     text-align: center;
-    top: 0;
+    top: -22gul%;
     width: 100%;
     z-index: 11;
 }
@@ -359,9 +366,8 @@ h1.navbar-brand {
 }
 
 .caption-content h2 {
-    color: #fff;
-    font-size: 52px;
-    font-weight: 400;
+    color: rgba(255, 0, 0, 0.78);
+    font-size: 44px;
     margin-bottom: 25px;
     text-transform: uppercase;
 }

@@ -56,4 +56,12 @@ class HomeController extends Controller
              return response()->json(['status'=>$charge->message],417);
          }
     }
+
+    /**
+     * Fantasy Rules
+     */
+    public function rules()
+    {
+        return view('frontend.rules');
+    }
 }

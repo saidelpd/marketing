@@ -3,9 +3,8 @@
         <div class="row">
             <div class="sec-title text-center">
                 <h2 class="wow animated bounceInLeft">Enter To Win</h2>
-                <p class="wow animated bounceInRight text-info">Fantasy Marketing LLC don't share personal information with other companies, we only use your data to contact you in case of winning.
-                    When you completed the checkout form you will be registered in our raffle, to review the raffle status or buy more tickets click
-                    <a class="text-warning" href="{{URL::route('login')}}">login</a>
+                <p class="wow animated bounceInRight text-info">Fantasy Marketing will not share your personal information with anyone.  The data will be utilized for notification purposes in case you win. When you complete the checkout form you will be registered to win.
+                    To review raffle status or purchase more entries, click  <a class="text-warning" href="{{URL::route('login')}}">here</a>
                 </p>
             </div>
             <form autocomplete="off">
