@@ -28,6 +28,7 @@ elixir(function(mix) {
             'frontend.js'
         ],'public/js/frontend-version.js').scripts([
         'vendor/metisMenu.min.js',
+        'vendor/chart.js',
         'backend.js'
     ],'public/js/backend-version.js')
 

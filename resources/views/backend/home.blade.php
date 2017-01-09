@@ -12,11 +12,18 @@
             <div class="col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i> Sales
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Tickets
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <div id="morris-area-chart"></div>
+                        <div class="row">
+                            <div class="col-md-12" id="homeGraph">
+                                <div class="loading_chart_dashboard" v-show="loading">
+                                    <img src="/images/loading.gif" class="img-responsive center-block" style="height: 300px;">
+                                </div>
+                                <canvas id="chart" height="130px" v-show="!loading"></canvas>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.panel-body -->
                 </div>

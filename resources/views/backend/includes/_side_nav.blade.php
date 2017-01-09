@@ -10,12 +10,16 @@
             <li>
                 <a href="{{URL::route('fantasy.dashboard')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
-
             <li>
                 <a href="{{URL::route('fantasy.tickets')}}"><i class="fa fa-bar-chart-o fa-fw"></i> Tickets</a>
             </li>
+
             <li>
-                <a href="{{URL::route('fantasy.payments')}}"><i class="fa fa-credit-card fa-fw"></i> Payments</a>
+               <a href="{{route('fantasy.buyTickets')}}"><i class="fa fa-ticket fa-fw"></i> Buy Tickets</a>
+            </li>
+
+            <li>
+               <a href="{{URL::route('fantasy.payments')}}"><i class="fa fa-credit-card fa-fw"></i> Payments</a>
             </li>
             @if(Auth::user()->isAdmin())
             <li>

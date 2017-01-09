@@ -51,7 +51,7 @@ class PaymentsViewJob implements ShouldQueue
             'tickets' => function ($p) {
                 $p->select('id', 'ticket_number', 'payment_id');
             }
-        ]);
+        ])->orderBy('id','Desc');
         $this->addFilters()->addPermissions();
         $this->payments = $this->payments->paginate(25)->appends(['owner' => $this->request->owner]);
         return $this;

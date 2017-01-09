@@ -44,7 +44,7 @@ class TicketsViewJob implements ShouldQueue
             'raffle'=>function($r){$r->select('id','obj_name','ticket_cost');},
             'user'=>function($u){$u->select('id','name','last_name');},
             'payment'=>function($p){$p->select('id','billing_id');}
-        ]);
+        ])->orderBy('id','Desc');
          $this->addFilters()->addPermissions();
          $this->tickets =  $this->tickets->paginate(25)->appends(['owner'=>$this->request->owner]);
         return $this;

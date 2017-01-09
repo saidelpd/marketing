@@ -23,8 +23,15 @@ Route::group(['prefix' => 'fantasy'], function () {
     Route::match(['get', 'post'], '/payments', ['uses' => 'FantasyAdminController@payments', 'as' => 'fantasy.payments']);
     Route::match(['get', 'post'], '/users', ['uses' => 'FantasyAdminController@users', 'as' => 'fantasy.users']);
 
+    Route::get('/buy_tickets', ['uses' => 'FantasyAdminController@buyTickets', 'as' => 'fantasy.buyTickets']);
+    Route::post('/checkout', ['uses' => 'FantasyAdminController@checkout', 'as' => 'fantasy.checkout']);
+
+    Route::post('/graphData', ['uses' => 'FantasyAdminController@graphData', 'as' => 'fantasy.graphData']);
+
     Route::get('/profile', ['uses' => 'FantasyAdminController@myProfile', 'as' => 'fantasy.myProfile']);
+    Route::post('/store_profile', ['uses' => 'FantasyAdminController@storeProfile', 'as' => 'fantasy.storeProfile']);
     Route::post('/user_view_notification', ['uses' => 'FantasyAdminController@userViewNotification', 'as' => 'fantasy.userViewNotification']);
+    Route::post('/user_change_password', ['uses' => 'FantasyAdminController@userChangePassword', 'as' => 'fantasy.userChangePassword']);
     Auth::routes();
 });
 

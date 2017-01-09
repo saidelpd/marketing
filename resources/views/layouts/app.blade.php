@@ -9,12 +9,7 @@
     <link href="{{elixir('css/backend.css')}}" rel="stylesheet">
 </head>
 
-<script>
-    var Laravel = {
-        csrfToken: "{{csrf_token()}}",
-        stripeKey: "{{config('services.stripe.key')}}"
-    };
-</script>
+
 
 <body>
 
@@ -24,6 +19,14 @@
         @include('backend.includes._nav_menu')
 
         @if (!Auth::guest())
+            <script>
+                var Laravel = {
+                    csrfToken: "{{csrf_token()}}",
+                    stripeKey: "{{config('services.stripe.key')}}",
+                    email: "{{Auth::user()->email}}",
+                    ticketPrice: {{$open_raffle->ticket_cost}}
+                };
+            </script>
             @include('backend.includes._side_nav')
         @endif
     </nav>

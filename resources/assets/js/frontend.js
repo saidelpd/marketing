@@ -216,7 +216,6 @@ $(function () {
            var vue = this;
            this.stripe = StripeCheckout.configure({
             key: Laravel.stripeKey,
-            image: 'http://67.205.186.50/images/logo.png',
             locale: "auto",
             token: function (token) {
                 vue.form.stripeToken = token.id;

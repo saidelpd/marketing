@@ -29,7 +29,7 @@ class BuyTicketsRequest extends FormRequest
             'checkout_phone'=>'required|max:15',
             'checkout_address'=>'required|max:255',
             'checkout_city'=>'required|max:50',
-            'checkout_state'=>'required|max:2',
+            'checkout_state'=>'required|max:3',
             'checkout_zip'=>'required|max:10',
             'checkout_quantity'=>'required|integer|min:1'
         ];
